@@ -67,10 +67,6 @@ class KingdomSheetPF2e extends ActorSheetPF2e<PartyPF2e> {
 
     #editingSettlements: Record<string, boolean> = {};
 
-    constructor(actor: PartyPF2e, options?: Partial<ActorSheetOptions>) {
-        super(actor, options);
-    }
-
     get kingdom(): Kingdom {
         const campaign = this.actor.campaign;
         if (!(campaign instanceof Kingdom)) {
@@ -234,12 +230,13 @@ class KingdomSheetPF2e extends ActorSheetPF2e<PartyPF2e> {
         const data = KINGDOM_SETTLEMENT_TYPE_DATA[settlement.type];
 
         const levelRange =
-            data.level[1] === Infinity
+            data.level[1] === Number.POSITIVE_INFINITY
                 ? `${data.level[0]}+`
                 : data.level[0] === data.level[1]
                   ? String(data.level[0])
                   : data.level.join("-");
-        const populationRange = data.population[1] === Infinity ? `${data.population[0]}+` : data.population.join("-");
+        const populationRange =
+            data.population[1] === Number.POSITIVE_INFINITY ? `${data.population[0]}+` : data.population.join("-");
 
         return {
             ...settlement,
@@ -248,7 +245,7 @@ class KingdomSheetPF2e extends ActorSheetPF2e<PartyPF2e> {
                 rollData: this.actor.getRollData(),
             }),
             editing: this.#editingSettlements[id] ?? false,
-            blocks: data.blocks === Infinity ? "10+" : data.blocks,
+            blocks: data.blocks === Number.POSITIVE_INFINITY ? "10+" : data.blocks,
             populationRange,
             levelRange,
             typeLabel: KINGDOM_SETTLEMENT_TYPE_LABELS[settlement.type],

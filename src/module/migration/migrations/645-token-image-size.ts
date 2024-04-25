@@ -18,9 +18,9 @@ export class Migration645TokenImageSize extends MigrationBase {
         return (
             flag instanceof Object &&
             "height" in flag &&
-            typeof flag["height"] === "number" &&
+            typeof flag.height === "number" &&
             "width" in flag &&
-            typeof flag["width"] === "number"
+            typeof flag.width === "number"
         );
     }
 

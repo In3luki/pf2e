@@ -464,7 +464,7 @@ abstract class PhysicalItemPF2e<TParent extends ActorPF2e | null = ActorPF2e | n
         render?: boolean;
     }): Promise<void> {
         if (!this.actor) {
-            throw ErrorPF2e(`Tried to move an unonwned item!`);
+            throw ErrorPF2e("Tried to move an unonwned item!");
         }
         if (toStack) {
             return this.stackWith(toStack);

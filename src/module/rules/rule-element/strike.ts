@@ -308,7 +308,7 @@ class StrikeRuleElement extends RuleElementPF2e<StrikeSchema> {
     /** Toggle the modular or versatile trait of this strike's weapon */
     async toggleTrait({ trait, selected }: UpdateToggleParams): Promise<void> {
         const ruleSources = fu.deepClone(this.item._source.system.rules);
-        const rule: StrikeSource | undefined = ruleSources.at(this.sourceIndex ?? NaN);
+        const rule: StrikeSource | undefined = ruleSources.at(this.sourceIndex ?? Number.NaN);
         if (rule?.key === "Strike") {
             rule.traitToggles = { ...this.traitToggles, [trait]: selected };
             await this.item.update({ "system.rules": ruleSources });

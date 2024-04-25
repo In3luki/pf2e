@@ -150,9 +150,9 @@ export class EncounterTrackerPF2e<TEncounter extends EncounterPF2e | null> exten
                     const icon = fontAwesomeIcon("signature", { fixedWidth: true });
                     toggleNameVisibility.append(icon);
 
-                    row
-                        .querySelector('.combatant-controls a[data-control="toggleHidden"]')
-                        ?.after(toggleNameVisibility);
+                    row.querySelector('.combatant-controls a[data-control="toggleHidden"]')?.after(
+                        toggleNameVisibility,
+                    );
 
                     if (!isActive) {
                         row.classList.add("hidden-name");

@@ -168,7 +168,7 @@ class AuraForm extends RuleElementForm<AuraRuleElementSource, AuraRuleElement> {
 
             const stringValue = source[key];
             const maybeIntegerValue =
-                typeof stringValue === "string" && /^\d+$/.test(stringValue) ? Number(stringValue) : NaN;
+                typeof stringValue === "string" && /^\d+$/.test(stringValue) ? Number(stringValue) : Number.NaN;
             if (Number.isInteger(maybeIntegerValue)) {
                 source[key] = maybeIntegerValue;
             }

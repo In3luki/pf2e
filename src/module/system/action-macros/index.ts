@@ -1,3 +1,4 @@
+import { Action } from "@actor/actions/index.ts";
 import * as balance from "./acrobatics/balance.ts";
 import * as maneuverInFlight from "./acrobatics/maneuver-in-flight.ts";
 import * as squeeze from "./acrobatics/squeeze.ts";
@@ -18,6 +19,7 @@ import { aid } from "./basic/aid.ts";
 import { crawl } from "./basic/crawl.ts";
 import { delay } from "./basic/delay.ts";
 import { dropProne } from "./basic/drop-prone.ts";
+// biome-ignore lint/suspicious/noShadowRestrictedNames: -
 import * as escape from "./basic/escape.ts";
 import { interact } from "./basic/interact.ts";
 import { leap } from "./basic/leap.ts";
@@ -68,11 +70,10 @@ import { sustain } from "./specialty-basic/sustain.ts";
 import * as concealAnObject from "./stealth/conceal-an-object.ts";
 import * as hide from "./stealth/hide.ts";
 import * as sneak from "./stealth/sneak.ts";
-import * as palmAnObject from "./thievery/palm-an-object.ts";
 import * as disableDevice from "./thievery/disable-device.ts";
+import * as palmAnObject from "./thievery/palm-an-object.ts";
 import * as pickALock from "./thievery/pick-a-lock.ts";
 import * as steal from "./thievery/steal.ts";
-import { Action } from "@actor/actions/index.ts";
 export { ActionMacroHelpers } from "./helpers.ts";
 export type { ActionDefaultOptions, SkillActionOptions } from "./types.ts";
 

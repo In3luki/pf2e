@@ -49,7 +49,7 @@ class DamageContext<
 
                 return !!(
                     paramsItemSlug === messageItemSlug &&
-                    item.uuid === item.uuid &&
+                    item.uuid === messageItem.uuid &&
                     item.isMelee === messageItem.isMelee
                 );
             });

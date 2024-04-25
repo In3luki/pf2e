@@ -808,7 +808,7 @@ class ActorPF2e<TParent extends TokenDocumentPF2e | null = TokenDocumentPF2e | n
         };
         return R.sortBy(
             this.items.contents,
-            (i) => sortOrder[i.type as ItemType] ?? Infinity,
+            (i) => sortOrder[i.type as ItemType] ?? Number.POSITIVE_INFINITY,
             (i) => i.isOfType("affliction", "condition", "effect"),
         )
             .flatMap((item) => item.prepareRuleElements())
@@ -1262,23 +1262,21 @@ class ActorPF2e<TParent extends TokenDocumentPF2e | null = TokenDocumentPF2e | n
                   isHealing: damageResult.totalApplied < 0,
                   shield: shieldDamage !== 0 ? { id: actorShield?.itemId ?? "", damage: shieldDamage } : null,
                   persistent: persistentCreated.map((c) => c.id),
-                  updates: Object.entries(damageResult.updates)
-                      .map(([path, newValue]) => {
-                          const preUpdateValue = fu.getProperty(preUpdateSource, path);
-                          if (typeof preUpdateValue === "number") {
-                              const difference = preUpdateValue - newValue;
-                              if (difference === 0) {
-                                  // Ignore the update if there is no difference
-                                  return [];
-                              }
-                              return {
-                                  path,
-                                  value: difference,
-                              };
+                  updates: Object.entries(damageResult.updates).flatMap(([path, newValue]) => {
+                      const preUpdateValue = fu.getProperty(preUpdateSource, path);
+                      if (typeof preUpdateValue === "number") {
+                          const difference = preUpdateValue - newValue;
+                          if (difference === 0) {
+                              // Ignore the update if there is no difference
+                              return [];
                           }
-                          return [];
-                      })
-                      .flat(),
+                          return {
+                              path,
+                              value: difference,
+                          };
+                      }
+                      return [];
+                  }),
               }
             : null;
 

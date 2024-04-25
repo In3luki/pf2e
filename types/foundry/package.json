@@ -4,10 +4,7 @@
     "description": "Type definitions for the Foundry VTT client, used by the PF2e system",
     "private": true,
     "type": "module",
-    "keywords": [
-        "foundry",
-        "pathfinder"
-    ],
+    "keywords": ["foundry", "pathfinder"],
     "devDependencies": {
         "@types/jquery": "^3.5.14",
         "@types/node": "^18.11.12",

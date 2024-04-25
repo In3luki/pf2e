@@ -792,7 +792,7 @@ class CharacterPF2e<TParent extends TokenDocumentPF2e | null = TokenDocumentPF2e
 
         const modifiers: ModifierPF2e[] = [];
         const dexCapSources: DexterityModifierCapData[] = [
-            { value: Infinity, source: "" },
+            { value: Number.POSITIVE_INFINITY, source: "" },
             ...synthetics.dexterityModifierCaps,
         ];
 

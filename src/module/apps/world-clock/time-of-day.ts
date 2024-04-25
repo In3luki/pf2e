@@ -1,8 +1,8 @@
 import { DateTime, HourNumbers, MinuteNumbers, SecondNumbers } from "luxon";
 
 enum TimeChangeMode {
-    ADVANCE,
-    RETRACT,
+    ADVANCE = 0,
+    RETRACT = 1,
 }
 
 class TimeOfDay {

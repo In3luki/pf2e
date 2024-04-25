@@ -126,8 +126,8 @@ class AncestryPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends 
         const senseData: SenseData[] = actor.system.perception.senses;
         const vision = this.system.vision;
         if (vision !== "normal" && !senseData.some((s) => s.type === vision)) {
-            senseData.push({ type: vision, acuity: "precise", range: Infinity, source: this.name });
-            const senseRollOptions = (actor.rollOptions["sense"] ??= {});
+            senseData.push({ type: vision, acuity: "precise", range: Number.POSITIVE_INFINITY, source: this.name });
+            const senseRollOptions = (actor.rollOptions.sense ??= {});
             senseRollOptions[`self:${sluggify(vision)}:from-ancestry`] = true;
         }
 

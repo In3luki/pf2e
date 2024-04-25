@@ -70,10 +70,10 @@ export class Migration894NoLayOnHandsVsUndead extends MigrationBase {
             };
 
             if (
-                source.system.overlays?.["uLuOg62dVyxvbW66"]?.overlayType === "override" &&
-                source.system.overlays["uLuOg62dVyxvbW66"].system?.damage?.["b39tbePoPlJSzLku"]
+                source.system.overlays?.uLuOg62dVyxvbW66?.overlayType === "override" &&
+                source.system.overlays.uLuOg62dVyxvbW66.system?.damage?.b39tbePoPlJSzLku
             ) {
-                source.system.overlays["uLuOg62dVyxvbW66"].system.damage["b39tbePoPlJSzLku"].kinds = ["healing"];
+                source.system.overlays.uLuOg62dVyxvbW66.system.damage.b39tbePoPlJSzLku.kinds = ["healing"];
             }
         }
     }

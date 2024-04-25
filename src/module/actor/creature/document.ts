@@ -685,7 +685,7 @@ abstract class CreaturePF2e<
             const candidateSpeeds = ((): (BaseSpeedSynthetic | LabeledSpeed)[] => {
                 const { otherSpeeds } = systemData.attributes.speed;
                 const existing = otherSpeeds.filter((s) => s.type === movementType);
-                const fromSynthetics = (this.synthetics.movementTypes[movementType] ?? []).map((d) => d() ?? []).flat();
+                const fromSynthetics = (this.synthetics.movementTypes[movementType] ?? []).flatMap((d) => d() ?? []);
                 return [...existing, ...fromSynthetics];
             })();
             const fastest = candidateSpeeds.reduce(

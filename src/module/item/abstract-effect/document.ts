@@ -62,7 +62,7 @@ abstract class AbstractEffectPF2e<TParent extends ActorPF2e | null = ActorPF2e |
     get totalDuration(): number {
         const { duration } = this.system;
         if (["unlimited", "encounter"].includes(duration.unit)) {
-            return Infinity;
+            return Number.POSITIVE_INFINITY;
         } else {
             return duration.value * (DURATION_UNITS[duration.unit] ?? 0);
         }

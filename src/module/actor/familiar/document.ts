@@ -94,7 +94,7 @@ class FamiliarPF2e<TParent extends TokenDocumentPF2e | null = TokenDocumentPF2e 
                 {
                     type: "low-light-vision",
                     acuity: "precise",
-                    range: Infinity,
+                    range: Number.POSITIVE_INFINITY,
                 },
             ],
         };

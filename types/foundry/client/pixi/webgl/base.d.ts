@@ -68,6 +68,7 @@ declare global {
      * This class defines an interface which all shaders utilize
      * @property uniforms The current uniforms of the Shader
      */
+    // biome-ignore lint/correctness/noInvalidUseBeforeDeclaration: -
     abstract class AbstractBaseShader extends BaseShaderMix {
         protected _defaults: object;
 
@@ -103,6 +104,7 @@ declare global {
     /**
      * An abstract filter which provides a framework for reusable definition
      */
+    // biome-ignore lint/correctness/noInvalidUseBeforeDeclaration: -
     class AbstractBaseFilter extends BaseFilterMix {
         /** The default uniforms used by the filter */
         static defaultUniforms: object;

@@ -63,7 +63,7 @@ export class CastingItemCreateDialog extends FormApplication<ActorPF2e> {
             throw ErrorPF2e("CastingItemCreateDialog | Could not read spelldata");
         }
 
-        const { cantripDeck5: cantripDeck5, ...nonCantripOptions } = itemTypeOptions;
+        const { cantripDeck5, ...nonCantripOptions } = itemTypeOptions;
         const minimumRank = this.spell.baseRank;
         const ranks = Array.from(Array(11 - minimumRank).keys()).map((index) => minimumRank + index);
         return {

@@ -458,9 +458,9 @@ class AttributeBuilder extends Application {
                 }
 
                 if (actor.system.build.attributes.manual) {
-                    actor.update({ [`system.details.keyability.value`]: attribute });
+                    actor.update({ "system.details.keyability.value": attribute });
                 } else {
-                    actor.class?.update({ [`system.keyAbility.selected`]: attribute });
+                    actor.class?.update({ "system.keyAbility.selected": attribute });
                 }
             });
         }
@@ -494,7 +494,7 @@ class AttributeBuilder extends Application {
 
                 const current = this.actor.system.build.attributes.apex;
                 actor.update({
-                    [`system.build.attributes.apex`]: this.#abpEnabled && attribute !== current ? attribute : null,
+                    "system.build.attributes.apex": this.#abpEnabled && attribute !== current ? attribute : null,
                 });
             });
         }

@@ -134,7 +134,7 @@ class TravelSpeedSheet extends FormApplication<{}, TravelSpeedSheetOptions> {
             requiresDetectionMode: data.explorationActivity === "Search" || data.explorationActivity === "DetectMagic",
             detectionMode: data.detectionMode,
             explorationActivity: data.explorationActivity,
-            explorationSpeed: parseFloat(
+            explorationSpeed: Number.parseFloat(
                 calculateNormalizedCharacterSpeed(
                     data.speed,
                     parseExplorationActivity(data.explorationActivity),
@@ -301,7 +301,7 @@ function parseExplorationOptions(actor: CharacterPF2e): ExplorationOptions {
  */
 function toArray<T>(data: Record<number, T>): T[] {
     return Object.entries(data)
-        .sort(([a], [b]) => parseInt(a) - parseInt(b))
+        .sort(([a], [b]) => Number.parseInt(a) - Number.parseInt(b))
         .map(([_, a]) => a);
 }
 

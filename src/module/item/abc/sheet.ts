@@ -30,7 +30,7 @@ abstract class ABCSheetPF2e<TItem extends ABCItem> extends ItemSheetPF2e<TItem> 
     }
 
     protected getLocalizedAbilities(traits: { value: AttributeString[] }): { [key: string]: string } {
-        if (traits !== undefined && traits.value) {
+        if (traits?.value) {
             if (traits.value.length === 6) return { free: game.i18n.localize("PF2E.AbilityFree") };
             return Object.fromEntries(traits.value.map((x: AttributeString) => [x, CONFIG.PF2E.abilities[x]]));
         }

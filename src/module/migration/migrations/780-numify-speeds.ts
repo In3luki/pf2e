@@ -19,7 +19,7 @@ export class Migration780NumifySpeeds extends MigrationBase {
     }
 
     #updateSpeed(speed: string | number): number {
-        const numifiedValue = parseInt(String(speed), 10);
+        const numifiedValue = Number.parseInt(String(speed), 10);
         return Number.isNaN(numifiedValue) ? 25 : numifiedValue;
     }
 }

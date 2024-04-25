@@ -313,7 +313,7 @@ export class MigrationRunner extends MigrationRunnerBase {
                 const deltaSource = token.delta?._source;
                 const hasMigratableData =
                     (!!deltaSource && !!deltaSource.flags?.pf2e) ||
-                    ((deltaSource ?? {}).items ?? []).length > 0 ||
+                    (deltaSource?.items ?? []).length > 0 ||
                     Object.keys(deltaSource?.system ?? {}).length > 0;
 
                 if (actor.isToken) {

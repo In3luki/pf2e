@@ -1,5 +1,5 @@
 export function registerFonts(): void {
-    CONFIG.fontDefinitions["Eczar"] = {
+    CONFIG.fontDefinitions.Eczar = {
         editor: true,
         fonts: [
             { urls: ["systems/pf2e/fonts/eczar-v16-latin-ext_latin-regular.woff2"], style: "normal", weight: "400" },
@@ -10,7 +10,7 @@ export function registerFonts(): void {
         ],
     };
 
-    CONFIG.fontDefinitions["Gelasio"] = {
+    CONFIG.fontDefinitions.Gelasio = {
         editor: false,
         fonts: [
             { urls: ["systems/pf2e/fonts/gelasio-v9-latin-ext_latin-regular.woff2"], style: "normal", weight: "400" },
@@ -33,12 +33,12 @@ export function registerFonts(): void {
     };
 
     // Pathfinder action glyphs
-    CONFIG.fontDefinitions["Pathfinder2eActions"] = {
+    CONFIG.fontDefinitions.Pathfinder2eActions = {
         editor: false,
         fonts: [{ urls: ["systems/pf2e/fonts/pathfinder-2e-actions.woff2"] }],
     };
 
-    CONFIG.fontDefinitions["Roboto"] = {
+    CONFIG.fontDefinitions.Roboto = {
         editor: true,
         fonts: [
             {
@@ -132,7 +132,7 @@ export function registerFonts(): void {
     };
 
     // Replace core Signika font with latin-extended coverage
-    CONFIG.fontDefinitions["Signika"] = {
+    CONFIG.fontDefinitions.Signika = {
         editor: true,
         fonts: [
             { urls: ["systems/pf2e/fonts/signika-v19-latin-ext_latin-regular.woff2"], style: "normal", weight: "400" },
@@ -142,7 +142,7 @@ export function registerFonts(): void {
         ],
     };
 
-    CONFIG.fontDefinitions["Vollkorn"] = {
+    CONFIG.fontDefinitions.Vollkorn = {
         editor: true,
         fonts: [
             {
@@ -169,8 +169,8 @@ export function registerFonts(): void {
     };
 
     // Core fonts without cross-OS compatibility
-    delete CONFIG.fontDefinitions["Courier"];
-    delete CONFIG.fontDefinitions["Times"];
+    delete CONFIG.fontDefinitions.Courier;
+    delete CONFIG.fontDefinitions.Times;
     // Clear legacy fonts array
     CONFIG._fontFamilies = [];
 }

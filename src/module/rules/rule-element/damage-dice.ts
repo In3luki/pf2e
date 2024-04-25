@@ -98,7 +98,7 @@ class DamageDiceRuleElement extends RuleElementPF2e<DamageDiceRuleSchema> {
                     }
 
                     override.diceNumber &&= Math.floor(
-                        Number(this.resolveValue(override.diceNumber, NaN, resolveOptions)),
+                        Number(this.resolveValue(override.diceNumber, Number.NaN, resolveOptions)),
                     );
                     if (Number.isNaN(override.diceNumber)) return null;
                     if (typeof override.diceNumber === "number" && override.diceNumber < 0) {
@@ -116,7 +116,7 @@ class DamageDiceRuleElement extends RuleElementPF2e<DamageDiceRuleSchema> {
                 const dieSize = this.resolveInjectedProperties(this.dieSize, resolveOptions);
                 if (dieSize !== null && !tupleHasValue(DAMAGE_DIE_SIZES, dieSize)) {
                     if (testPassed) {
-                        this.failValidation(`Die size must be a recognized damage die size, null, or omitted`);
+                        this.failValidation("Die size must be a recognized damage die size, null, or omitted");
                     }
                     return null;
                 }

@@ -64,7 +64,7 @@ import "./sources/index.d.ts";
 import "./webgl/index.d.ts";
 
 declare global {
-    module PIXI {
+    namespace PIXI {
         export {
             AccessibilityManager,
             AlphaFilter,

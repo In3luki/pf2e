@@ -246,7 +246,7 @@ class DamageRoll extends AbstractDamageRoll {
 
         if (!this._evaluated) await this.evaluate();
         const formula = isPrivate ? "???" : (await Promise.all(instances.map((i) => i.render()))).join(" + ");
-        const total = this.total ?? NaN;
+        const total = this.total ?? Number.NaN;
         const damageKinds = this.kinds;
         const showBreakdown = this.options.showBreakdown;
         const showTotalInstances = instances.length > 1 || !(showBreakdown || game.user.isGM);
@@ -619,8 +619,7 @@ class DamageInstance extends AbstractDamageRoll {
 Promise.resolve().then(() => {
     // Peggy calls `eval` by default, which makes build tools cranky: instead use the generated source and pass it to a
     // function constructor.
-    // biome-ignore lint/complexity/noBannedTypes:
-    const Evaluator = function () {}.constructor as new (...args: unknown[]) => Function;
+    const Evaluator = (() => {}).constructor as new (..._args: unknown[]) => Function;
     new Evaluator("AbstractDamageRoll", ROLL_PARSER).call(this, AbstractDamageRoll);
 });
 

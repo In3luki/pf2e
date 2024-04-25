@@ -118,11 +118,11 @@ declare global {
     }
 
     interface ActorSheetData<TActor extends Actor> extends DocumentSheetData<TActor> {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // biome-ignorelint/suspicious/noExplicitAny: -
         actor: any;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // biome-ignorelint/suspicious/noExplicitAny: -
         data: any;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // biome-ignorelint/suspicious/noExplicitAny: -
         items: any;
         cssClass: "editable" | "locked";
         effects: RawObject<ActiveEffect<TActor>>[];

@@ -31,7 +31,7 @@ export class Migration767ConvertVoluntaryFlaws extends MigrationBase {
 
         if (system.voluntaryFlaws) {
             delete system.voluntaryFlaws;
-            delete system["voluntaryFlaws"];
+            delete system.voluntaryFlaws;
         }
     }
 }

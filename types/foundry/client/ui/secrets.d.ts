@@ -48,6 +48,7 @@ interface HTMLSecretContentCallback {
      * @param secret The secret element whose surrounding content we wish to retrieve.
      * @returns The content where the secret is housed.
      */
+    // biome-ignore lint/style/useShorthandFunctionType: -
     (secret: HTMLElement): string;
 }
 
@@ -57,6 +58,7 @@ interface HTMLSecretUpdateCallback {
      * @param content The content block containing the updated secret element.
      * @returns The updated Document.
      */
+    // biome-ignore lint/style/useShorthandFunctionType: -
     (secret: HTMLElement, content: string): Promise<ClientDocument>;
 }
 

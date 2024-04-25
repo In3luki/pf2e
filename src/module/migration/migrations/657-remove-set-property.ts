@@ -21,10 +21,10 @@ export class Migration657RemoveSetProperty extends MigrationBase {
             (rule: Record<string, unknown>): rule is SetPropertySource =>
                 typeof rule.key === "string" &&
                 ["SetProperty", "PF2E.RuleElement.SetProperty"].includes(rule.key) &&
-                typeof rule["property"] === "string" &&
-                typeof rule["on"] === "object" &&
-                rule["on"] !== null &&
-                "added" in rule["on"],
+                typeof rule.property === "string" &&
+                typeof rule.on === "object" &&
+                rule.on !== null &&
+                "added" in rule.on,
         );
         const aeLikes = setPropertyRules.map(
             (setProperty): AELikeSource => ({

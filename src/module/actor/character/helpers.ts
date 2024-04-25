@@ -369,7 +369,8 @@ function createPonderousPenalty(actor: CharacterPF2e): ModifierPF2e | null {
     const slug = "ponderous";
     if (!armor?.traits.has(slug)) return null;
 
-    const penaltyValue = actor.abilities.str.mod >= (armor.strength ?? -Infinity) ? -1 : armor.checkPenalty || -1;
+    const penaltyValue =
+        actor.abilities.str.mod >= (armor.strength ?? Number.NEGATIVE_INFINITY) ? -1 : armor.checkPenalty || -1;
 
     return new ModifierPF2e({
         label: "PF2E.TraitPonderous",

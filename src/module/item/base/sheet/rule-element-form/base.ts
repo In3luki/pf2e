@@ -192,7 +192,7 @@ class RuleElementForm<
             cleanDataUsingSchema(this.schema.fields, result);
         }
         rules[this.index] = result;
-        await this.item.update({ [`system.rules`]: rules });
+        await this.item.update({ "system.rules": rules });
     }
 
     activateListeners(html: HTMLElement): void {

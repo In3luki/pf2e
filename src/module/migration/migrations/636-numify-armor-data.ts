@@ -26,7 +26,7 @@ export class Migration636NumifyArmorData extends MigrationBase {
 
         // This might have "ft" in the string
         if (R.isObject(system.speed) && typeof system.speed.value === "string") {
-            system.speed.value = parseInt(system.speed.value, 10) || 0;
+            system.speed.value = Number.parseInt(system.speed.value, 10) || 0;
         }
     }
 }

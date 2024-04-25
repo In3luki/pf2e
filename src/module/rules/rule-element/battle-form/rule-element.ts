@@ -26,7 +26,7 @@ class BattleFormRuleElement extends RuleElementPF2e<BattleFormRuleSchema> {
     protected static override validActorTypes: ActorType[] = ["character"];
 
     /** The label given to modifiers of AC, skills, and strikes */
-    modifierLabel: string = "invalid";
+    modifierLabel = "invalid";
 
     constructor(data: BattleFormSource, options: RuleElementOptions) {
         super(data, options);
@@ -242,7 +242,7 @@ class BattleFormRuleElement extends RuleElementPF2e<BattleFormRuleSchema> {
 
     #setRollOptions(): void {
         const { attributes, rollOptions } = this.actor;
-        rollOptions.all["polymorph"] = true;
+        rollOptions.all.polymorph = true;
         rollOptions.all["battle-form"] = true;
         if (this.overrides.armorClass.ignoreCheckPenalty) {
             rollOptions.all["armor:ignore-check-penalty"] = true;

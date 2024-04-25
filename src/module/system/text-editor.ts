@@ -303,12 +303,12 @@ class TextEditorPF2e extends TextEditor {
                 game.i18n.format("PF2E.InlineTemplateErrors.TypeUnsupported", { type: params.type }),
             );
             return null;
-        } else if (isNaN(+params.distance)) {
+        } else if (Number.isNaN(+params.distance)) {
             ui.notifications.error(
                 game.i18n.format("PF2E.InlineTemplateErrors.DistanceNoNumber", { distance: params.distance }),
             );
             return null;
-        } else if (params.width && isNaN(+params.width)) {
+        } else if (params.width && Number.isNaN(+params.width)) {
             ui.notifications.error(
                 game.i18n.format("PF2E.InlineTemplateErrors.WidthNoNumber", { width: params.width }),
             );
@@ -400,7 +400,7 @@ class TextEditorPF2e extends TextEditor {
         );
 
         // validate difficulty class format
-        const dc = params["difficulty-class"] || params["dc"];
+        const dc = params["difficulty-class"] || params.dc;
         if (dc && Number.isNumeric(dc) && !Number.isInteger(Number(dc))) {
             console.warn("Numeric DC", dc, "is not an integer for action", slug);
             return this.#invalidInlineAction(
@@ -413,17 +413,17 @@ class TextEditorPF2e extends TextEditor {
         const element = document.createElement("span");
 
         // action attribute
-        element.dataset["pf2Action"] = slug;
+        element.dataset.pf2Action = slug;
 
         // glyph attribute
         const glyph = getActionGlyph(action.cost ?? null);
         if (glyph) {
-            element.dataset["pf2Glyph"] = glyph;
+            element.dataset.pf2Glyph = glyph;
         }
 
         // attributes
         const aliases: Record<string, string> = {
-            ["difficulty-class"]: "dc",
+            "difficulty-class": "dc",
             stat: "skill",
             statistic: "skill",
         };
@@ -454,7 +454,7 @@ class TextEditorPF2e extends TextEditor {
                 (["all", "gm"].includes(visibility) && game.user.isGM);
 
             // statistic
-            const statistic = (params["statistic"] || params["stat"] || params["skill"])?.trim();
+            const statistic = (params.statistic || params.stat || params.skill)?.trim();
 
             if ((dc && showDC) || statistic) {
                 const STATISTIC_LABELS: Record<string, string> = {
@@ -470,7 +470,7 @@ class TextEditorPF2e extends TextEditor {
                     // (<span data-visibility="...">DC #</span> Statistic)
                     details.appendChild(document.createTextNode("("));
                     const span = document.createElement("span");
-                    span.dataset["visibility"] = visibility;
+                    span.dataset.visibility = visibility;
                     span.innerText = game.i18n.format("PF2E.InlineAction.Check.DC", { dc });
                     details.appendChild(span);
                     const suffix = statistic
@@ -500,14 +500,14 @@ class TextEditorPF2e extends TextEditor {
         const traits = variant?.traits ?? action.traits;
 
         // traits as tooltip
-        element.dataset["tooltip"] = traits
+        element.dataset.tooltip = traits
             .map((trait) => game.i18n.localize(CONFIG.PF2E.actionTraits[trait] || trait))
             .sort()
             .join(", ");
 
         // add an indicator for secret checks
         if (traits.includes("secret")) {
-            element.dataset["secret"] = "";
+            element.dataset.secret = "";
         }
 
         return element;
@@ -574,7 +574,7 @@ class TextEditorPF2e extends TextEditor {
             adjustments = new Array(types.length).fill(adjustments[0]);
         }
 
-        if (adjustments.some((adj) => adj !== "" && isNaN(parseInt(adj)))) {
+        if (adjustments.some((adj) => adj !== "" && Number.isNaN(Number.parseInt(adj)))) {
             ui.notifications.warn(game.i18n.localize("PF2E.InlineCheck.Errors.NonIntegerAdjustment"));
             return null;
         }
@@ -698,7 +698,7 @@ class TextEditorPF2e extends TextEditor {
 
             // When using fixed DCs/adjustments, parse and add them to render the real DC
             if (checkDC !== "@self.level") {
-                const dc = params.dc === "" ? NaN : Number(checkDC);
+                const dc = params.dc === "" ? Number.NaN : Number(checkDC);
                 const displayedDC = Number.isNaN(dc) ? checkDC : `${dc + Number(params.adjustment)}`;
                 const text = anchor.innerText;
                 anchor.querySelector("span.label")?.replaceWith(

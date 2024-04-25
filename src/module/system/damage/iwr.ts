@@ -26,7 +26,7 @@ function applyIWR(actor: ActorPF2e, roll: Rolled<DamageRoll>, rollOptions: Set<s
     const instances = roll.instances as Rolled<DamageInstance>[];
     const persistent: Rolled<DamageInstance>[] = []; // Persistent damage instances filtered for immunities
     const ignoredResistances = (roll.options.ignoredResistances ?? []).map(
-        (ir) => new Resistance({ type: ir.type, value: ir.max ?? Infinity }),
+        (ir) => new Resistance({ type: ir.type, value: ir.max ?? Number.POSITIVE_INFINITY }),
     );
 
     const nonDamageWeaknesses = weaknesses.filter(

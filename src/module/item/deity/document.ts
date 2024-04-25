@@ -65,7 +65,7 @@ class DeityPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends Ite
         const slug = this.slug ?? sluggify(this.name);
         const prefix = "deity:primary";
         const actorRollOptions = this.actor.rollOptions;
-        actorRollOptions.all["deity"] = true;
+        actorRollOptions.all.deity = true;
         actorRollOptions.all[`${prefix}:${slug}`] = true;
 
         const sanctifications = this.getSanctificationRollOptions().map((o) => `${prefix}:${o}`);

@@ -180,17 +180,19 @@ class CheckPromptDialog extends Application<CheckPromptDialogOptions> {
             const pwol = game.pf2e.settings.variants.pwol.enabled;
             const activeDCTab = htmlQuery(html, "section.dc-content section.tab.active");
             if (activeDCTab?.dataset.tab === "set-dc") {
-                return Number(htmlQuery<HTMLInputElement>(html, "input#check-prompt-dc")?.value || NaN);
+                return Number(htmlQuery<HTMLInputElement>(html, "input#check-prompt-dc")?.value || Number.NaN);
             } else if (activeDCTab?.dataset.tab === "simple-dc") {
                 const profRank = htmlQuery<HTMLInputElement>(html, "select#check-prompt-simple-dc")?.value;
                 if (tupleHasValue(PROFICIENCY_RANKS, profRank)) {
                     return calculateSimpleDC(profRank, { pwol });
                 }
             } else if (activeDCTab?.dataset.tab === "level-dc") {
-                const level = Number(htmlQuery<HTMLInputElement>(html, "input#check-prompt-level-dc")?.value || NaN);
+                const level = Number(
+                    htmlQuery<HTMLInputElement>(html, "input#check-prompt-level-dc")?.value || Number.NaN,
+                );
                 if (Number.isInteger(level)) return calculateDC(+level, { pwol });
             }
-            return NaN;
+            return Number.NaN;
         })();
 
         if (Number.isInteger(dc)) {

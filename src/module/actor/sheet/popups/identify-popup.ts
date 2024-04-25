@@ -67,7 +67,7 @@ export class IdentifyItemPopup extends FormApplication<PhysicalItemPF2e> {
     }
 
     protected override async _updateObject(_event: Event, formData: Record<string, unknown>): Promise<void> {
-        const status = formData["status"];
+        const status = formData.status;
         if (status === "identified") {
             return this.object.setIdentificationStatus(status);
         }

@@ -47,7 +47,7 @@ export function registerHandlebarsHelpers(): void {
 
     Handlebars.registerHelper("ordinal", (value: unknown): string | null => {
         const numericValue = Number(value);
-        return isNaN(numericValue) ? null : ordinalString(numericValue);
+        return Number.isNaN(numericValue) ? null : ordinalString(numericValue);
     });
 
     Handlebars.registerHelper("sluggify", (text: unknown): string => {

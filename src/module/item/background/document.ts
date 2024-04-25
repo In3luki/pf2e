@@ -17,7 +17,7 @@ class BackgroundPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extend
             .find((i): i is FeatPF2e<ActorPF2e> => i.isOfType("feat") && i.category === "skill");
 
         if (grantedSkillFeat) {
-            this.system.items["GRANT"] = {
+            this.system.items.GRANT = {
                 uuid: grantedSkillFeat.sourceId ?? grantedSkillFeat.uuid,
                 img: grantedSkillFeat.img,
                 name: grantedSkillFeat.name,

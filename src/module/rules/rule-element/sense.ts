@@ -36,8 +36,8 @@ class SenseRuleElement extends RuleElementPF2e<SenseRuleSchema> {
 
     override beforePrepareData(): void {
         const range = tupleHasValue(SENSES_WITH_UNLIMITED_RANGE, this.selector)
-            ? Infinity
-            : Math.max(0, Math.trunc(Math.floor(Number(this.resolveValue(this.range, Infinity)) || 0)));
+            ? Number.POSITIVE_INFINITY
+            : Math.max(0, Math.trunc(Math.floor(Number(this.resolveValue(this.range, Number.POSITIVE_INFINITY)) || 0)));
         if (range <= 0) {
             if (range < 0) this.failValidation("range: must resolve to a positive number");
             return;

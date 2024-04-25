@@ -70,7 +70,7 @@ export class Migration852AbilityScoresToModifiers extends MigrationBase {
             rule.value = rule.value
                 .replace(
                     /(?:floor\()?\(?@actor.abilities.([a-z]{3})\.value ?- ?10\) ?\/ ?2\)?/,
-                    `@actor.abilities.$1.mod`,
+                    "@actor.abilities.$1.mod",
                 )
                 .replace(/\s+/g, " ")
                 .trim();

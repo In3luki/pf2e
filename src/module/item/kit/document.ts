@@ -84,7 +84,7 @@ class KitPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends ItemP
             const price: Record<string, unknown> = changed.system.price;
             for (const denomination of DENOMINATIONS) {
                 if (price[denomination] === 0) {
-                    price[`-=denomination`] = null;
+                    price["-=denomination"] = null;
                 }
             }
         }

@@ -437,13 +437,13 @@ class CharacterSheetPF2e<TActor extends CharacterPF2e> extends CreatureSheetPF2e
         for (const itemData of sheetData.items) {
             // Lore Skills
             if (itemData.type === "lore") {
-                itemData.system.icon = this.getProficiencyIcon((itemData.system.proficient || {}).value);
-                itemData.system.hover = CONFIG.PF2E.proficiencyLevels[(itemData.system.proficient || {}).value];
+                itemData.system.icon = this.getProficiencyIcon(itemData.system.proficient?.value);
+                itemData.system.hover = CONFIG.PF2E.proficiencyLevels[itemData.system.proficient?.value];
 
                 const rank = itemData.system.proficient?.value || 0;
                 const proficiency = createProficiencyModifier({ actor: this.actor, rank, domains: [] }).modifier;
                 const modifier = actorData.system.abilities.int.mod;
-                const itemBonus = Number((itemData.system.item || {}).value || 0);
+                const itemBonus = Number(itemData.system.item?.value || 0);
                 itemData.system.itemBonus = itemBonus;
                 itemData.system.value = modifier + proficiency + itemBonus;
                 itemData.system.breakdown = `int modifier(${modifier}) + proficiency(${proficiency}) + item bonus(${itemBonus})`;
@@ -671,7 +671,7 @@ class CharacterSheetPF2e<TActor extends CharacterPF2e> extends CreatureSheetPF2e
             for (const button of auxActionButtons) {
                 const modularSelect = htmlQuery(button, "select");
                 button.addEventListener("click", () => {
-                    const auxiliaryActionIndex = Number(button.dataset.auxiliaryActionIndex ?? NaN);
+                    const auxiliaryActionIndex = Number(button.dataset.auxiliaryActionIndex ?? Number.NaN);
                     const strike = this.getStrikeFromDOM(button);
                     const selection = modularSelect?.value ?? null;
                     strike?.auxiliaryActions?.at(auxiliaryActionIndex)?.execute({ selection });
@@ -857,7 +857,7 @@ class CharacterSheetPF2e<TActor extends CharacterPF2e> extends CreatureSheetPF2e
 
         // SIDEBAR
 
-        handlers["rest"] = async (event) => {
+        handlers.rest = async (event) => {
             return game.pf2e.actions.restForTheNight({ event, actors: this.actor });
         };
 

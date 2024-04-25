@@ -167,7 +167,7 @@ class TokenConfigPF2e<TDocument extends TokenDocumentPF2e> extends TokenConfig<T
     protected override _getSubmitData(updateData: Record<string, unknown> | null = {}): Record<string, unknown> {
         const changes = updateData ?? {};
         if (this.form.querySelector<HTMLInputElement>("input[name=scale]")?.disabled) {
-            changes["scale"] = Math.abs(this.token._source.texture.scaleX);
+            changes.scale = Math.abs(this.token._source.texture.scaleX);
         }
         return super._getSubmitData(changes);
     }
@@ -178,10 +178,10 @@ class TokenConfigPF2e<TDocument extends TokenDocumentPF2e> extends TokenConfig<T
                 const { dimensions } = this.actor;
                 const width = Math.max(Math.round(dimensions.width / 5), 1);
                 const length = Math.max(Math.round(dimensions.length / 5), 1);
-                formData["width"] = width;
-                formData["height"] = length;
+                formData.width = width;
+                formData.height = length;
             } else {
-                formData["width"] = formData["height"] = this.dimensionsFromActorSize;
+                formData.width = formData.height = this.dimensionsFromActorSize;
             }
         }
         return super._updateObject(event, formData);

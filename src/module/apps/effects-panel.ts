@@ -48,7 +48,7 @@ export class EffectsPanel extends Application {
             actor.itemTypes.effect.map((effect) => {
                 const duration = effect.totalDuration;
                 const { system } = effect;
-                if (duration === Infinity) {
+                if (duration === Number.POSITIVE_INFINITY) {
                     if (system.duration.unit === "encounter") {
                         system.remaining = system.expired
                             ? game.i18n.localize("PF2E.EffectPanel.Expired")

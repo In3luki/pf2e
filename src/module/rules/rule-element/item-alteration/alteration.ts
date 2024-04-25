@@ -126,7 +126,7 @@ class ItemAlteration extends foundry.abstract.DataModel<RuleElementPF2e, ItemAlt
                     : effect.system.badge ?? { value: 0 };
                 if (typeof badge.value !== "number") return;
                 const newValue = AELikeRuleElement.getNewValue(this.mode, badge.value, data.alteration.value);
-                const max = "max" in badge ? badge.max ?? Infinity : Infinity;
+                const max = "max" in badge ? badge.max ?? Number.POSITIVE_INFINITY : Number.POSITIVE_INFINITY;
                 const min = "min" in badge ? badge.min ?? 0 : 0;
                 badge.value = Math.clamp(newValue, min, max) || 0;
                 return;
@@ -258,7 +258,7 @@ class ItemAlteration extends foundry.abstract.DataModel<RuleElementPF2e, ItemAlt
             case "persistent-damage": {
                 const pdObject = isObject<PersistentSourceData>(data.alteration.value)
                     ? data.alteration.value
-                    : { dc: NaN };
+                    : { dc: Number.NaN };
                 const dc = Math.trunc(Math.abs(Number(pdObject?.dc) || 15));
                 data.alteration.value = { ...pdObject, dc };
                 const validator = ITEM_ALTERATION_VALIDATORS[this.property];

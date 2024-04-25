@@ -39,7 +39,7 @@ describe("test migration runner", () => {
         worldSchemaVersion: 10,
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: -
     (global as any).game = {
         data: {
             version: "3.2.1",
@@ -73,21 +73,21 @@ describe("test migration runner", () => {
         scenes: new MockWorldCollection<MockScene>(),
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: -
     (global as any).SceneNavigation = {
         displayProgressBar(...args: unknown): void {},
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: -
     (global as any).CONFIG = {
         Actor: { documentClass: MockActor },
         Item: { documentClass: MockItem },
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: -
     (global as any).ui = {
         notifications: {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            // biome-ignore lint/suspicious/noExplicitAny: -
             info(_msg: string, _other?: any) {},
         },
     };

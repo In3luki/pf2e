@@ -432,6 +432,7 @@ class ItemPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends Item
      * Currently renders description text using enrichHTML.
      */
     protected async processChatData(
+        // biome-ignore lint/style/useDefaultParameterLast: -
         htmlOptions: EnrichmentOptionsPF2e = {},
         chatData: RawItemChatData,
     ): Promise<RawItemChatData> {
@@ -846,7 +847,7 @@ class ItemPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends Item
                     const attackEffects = item.system.attackEffects.value;
                     if (attackEffects.includes(slug)) {
                         const updatedEffects = attackEffects.filter((effect) => effect !== slug);
-                        promises.push(item.update({ ["system.attackEffects.value"]: updatedEffects }));
+                        promises.push(item.update({ "system.attackEffects.value": updatedEffects }));
                     }
                 }
                 if (promises.length > 0) {

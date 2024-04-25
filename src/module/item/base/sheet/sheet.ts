@@ -389,9 +389,9 @@ class ItemSheetPF2e<TItem extends ItemPF2e> extends ItemSheet<TItem, ItemSheetOp
             });
             closeBtn?.removeAttribute("disabled");
 
-            html
-                .querySelector<HTMLButtonElement>(".rule-editing button[data-action=apply]")
-                ?.addEventListener("click", () => {
+            html.querySelector<HTMLButtonElement>(".rule-editing button[data-action=apply]")?.addEventListener(
+                "click",
+                () => {
                     const value = view.state.doc.toString();
 
                     // Close early if the editing index is invalid
@@ -415,13 +415,14 @@ class ItemSheetPF2e<TItem extends ItemPF2e> extends ItemSheet<TItem, ItemSheetOp
                             throw error;
                         }
                     }
-                });
+                },
+            );
         }
 
         // Activate rule element sub forms
         const ruleSections = html.querySelectorAll<HTMLElement>(".rules .rule-form");
         for (const ruleSection of Array.from(ruleSections)) {
-            const idx = ruleSection.dataset.idx ? Number(ruleSection.dataset.idx) : NaN;
+            const idx = ruleSection.dataset.idx ? Number(ruleSection.dataset.idx) : Number.NaN;
             this.#ruleElementForms.at(idx)?.activateListeners(ruleSection);
         }
 

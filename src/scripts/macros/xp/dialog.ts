@@ -24,7 +24,7 @@ function dialogTemplate(xp: XPCalculation): string {
     </tr>
     <tr>
         <th>${game.i18n.localize("PF2E.Encounter.Budget.Threat")}</th>
-        <td>${game.i18n.localize("PF2E.Encounter.Budget.Threats." + xp.rating)} (${xp.totalXP} XP)</td>
+        <td>${game.i18n.localize(`PF2E.Encounter.Budget.Threats.${xp.rating}`)} (${xp.totalXP} XP)</td>
     </tr>
     <tr>
         <th>${game.i18n.localize("PF2E.Encounter.Budget.Reward")}</th>
@@ -191,7 +191,7 @@ function xpFromEncounter(): void {
     const hazards = getHazards(actors);
     if (npcLevels.length === 0 && hazards.length === 0) {
         ui.notifications.error(
-            `You must select at least one opposition and/or hazard token and optionally all PC tokens`,
+            "You must select at least one opposition and/or hazard token and optionally all PC tokens",
         );
         return;
     }

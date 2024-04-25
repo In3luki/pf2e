@@ -259,7 +259,7 @@ class CompendiumBrowser extends Application {
                 filter.checkboxes.rank.selected.push(rank);
             }
             if ((entry.isPrepared || entry.isSpontaneous || entry.isInnate) && !category) {
-                filter.checkboxes.category.options["spell"].selected = true;
+                filter.checkboxes.category.options.spell.selected = true;
                 filter.checkboxes.category.selected.push("spell");
             }
         }
@@ -627,7 +627,7 @@ class CompendiumBrowser extends Application {
                             Array.isArray(selections) &&
                             selections.every(
                                 (s: unknown): s is { value: string; label: string } =>
-                                    isObject<{ value: unknown }>(s) && typeof s["value"] === "string",
+                                    isObject<{ value: unknown }>(s) && typeof s.value === "string",
                             );
 
                         if (isValid) {

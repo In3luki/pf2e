@@ -144,7 +144,7 @@ class PartySheetPF2e extends ActorSheetPF2e<PartyPF2e> {
 
             return {
                 actor,
-                hasBulk: actor.inventory.bulk.encumberedAfter !== Infinity,
+                hasBulk: actor.inventory.bulk.encumberedAfter !== Number.POSITIVE_INFINITY,
                 bestSkills: Object.values(actor.skills ?? {})
                     .filter((s) => s.proficient && !s.lore)
                     .sort((a, b) => b.mod - a.mod)
@@ -208,7 +208,7 @@ class PartySheetPF2e extends ActorSheetPF2e<PartyPF2e> {
         );
 
         function getBestSkill(slug: string): SkillData | null {
-            const bestMember = R.maxBy(members, (m) => m.skills[slug]?.mod ?? -Infinity);
+            const bestMember = R.maxBy(members, (m) => m.skills[slug]?.mod ?? Number.NEGATIVE_INFINITY);
             const statistic = bestMember?.skills[slug];
             return statistic ? R.pick(statistic, ["slug", "mod", "label", "rank"]) : null;
         }

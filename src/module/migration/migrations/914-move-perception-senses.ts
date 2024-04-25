@@ -273,7 +273,7 @@ export class Migration914MovePerceptionSenses extends MigrationBase {
                     }
                     return "imprecise";
                 })();
-                const range = type === "truesight" ? 60 : Number(/(\d+)/.exec(text)?.at(1) || NaN);
+                const range = type === "truesight" ? 60 : Number(/(\d+)/.exec(text)?.at(1) || Number.NaN);
                 const sense: SenseData | null = tupleHasValue(SENSES_WITH_UNLIMITED_RANGE, type)
                     ? { type }
                     : type && range > 0 && Number.isInteger(range)

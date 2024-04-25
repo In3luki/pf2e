@@ -181,7 +181,7 @@ class MeleePF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends Ite
 
         // Adjust the NPC's reach if this attack has a reach treat
         const reachTrait = this.system.traits.value.find((t) => /^reach-\d+$/.test(t));
-        const attackReach = Number(reachTrait?.replace(/^reach-/, "") ?? NaN);
+        const attackReach = Number(reachTrait?.replace(/^reach-/, "") ?? Number.NaN);
         if (Number.isInteger(attackReach)) {
             const reach = actor.system.attributes.reach;
             reach.base = attackReach > 0 ? Math.max(attackReach, reach.base) : 0;

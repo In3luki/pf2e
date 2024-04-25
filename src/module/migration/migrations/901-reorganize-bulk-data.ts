@@ -85,7 +85,7 @@ export class Migration901ReorganizeBulkData extends MigrationBase {
 
     #bulkStringToNumber(bulkObject: unknown): number {
         if (!R.isObject(bulkObject)) return 0;
-        const bulkString = String(bulkObject["value"] || "-").toLocaleUpperCase("en");
+        const bulkString = String(bulkObject.value || "-").toLocaleUpperCase("en");
 
         switch (bulkString) {
             case "-":

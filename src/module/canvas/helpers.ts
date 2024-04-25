@@ -20,7 +20,7 @@ function measureDistanceCuboid(
         target?: TokenPF2e | null;
     } = {},
 ): number {
-    if (!canvas.grid) return NaN;
+    if (!canvas.grid) return Number.NaN;
     if (canvas.grid.type !== CONST.GRID_TYPES.SQUARE) {
         return canvas.grid.measurePath([r0, r1]).distance;
     }
@@ -135,7 +135,7 @@ function measureDistanceOnGrid(
     segment: { dx: number; dy: number; dz?: number | null },
     { reach = null }: { reach?: number | null } = {},
 ): number {
-    if (!canvas.dimensions) return NaN;
+    if (!canvas.dimensions) return Number.NaN;
 
     const gridSize = canvas.dimensions.size;
     const gridDistance = canvas.dimensions.distance;

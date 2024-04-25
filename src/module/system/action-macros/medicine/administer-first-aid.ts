@@ -40,7 +40,7 @@ function administerFirstAid(options: { variant: AdministerFirstAidVariant } & Sk
                         criticalFailure: `${PREFIX}.Stabilize.Notes.criticalFailure`,
                         success: `${PREFIX}.Stabilize.Notes.success`,
                     },
-                    title: mainTitle + " - " + game.i18n.localize(`${PREFIX}.Stabilize.Title`),
+                    title: `${mainTitle} - ${game.i18n.localize(`${PREFIX}.Stabilize.Title`)}`,
                     variant: options.variant,
                 };
             case "stop-bleeding":
@@ -49,7 +49,7 @@ function administerFirstAid(options: { variant: AdministerFirstAidVariant } & Sk
                         criticalFailure: `${PREFIX}.StopBleeding.Notes.criticalFailure`,
                         success: `${PREFIX}.StopBleeding.Notes.success`,
                     },
-                    title: mainTitle + " - " + game.i18n.localize(`${PREFIX}.StopBleeding.Title`),
+                    title: `${mainTitle} - ${game.i18n.localize(`${PREFIX}.StopBleeding.Title`)}`,
                     variant: options.variant,
                 };
             default: {

@@ -20,10 +20,12 @@
                 "useRegexLiterals": "off"
             },
             "correctness": {
-                "noUnusedVariables": "error",
+                "noConstructorReturn": "off",
+                "noUnnecessaryContinue": "off",
                 "noVoidTypeReturn": "off"
             },
             "performance": {
+                "noAccumulatingSpread": "off",
                 "noDelete": "off"
             },
             "style": {
@@ -32,23 +34,51 @@
                 "noNonNullAssertion": "off",
                 "noParameterAssign": "off",
                 "noUselessElse": "off",
+                "noVar": "error",
                 "useExportType": "off"
             },
             "suspicious": {
+                "noApproximativeNumericConstant": "off",
                 "noAssignInExpressions": "off",
                 "noConfusingVoidType": "off",
                 "noConsoleLog": "off",
-                "noExplicitAny": "off",
+                "noEmptyInterface": "off",
                 "noUnsafeDeclarationMerging": "off"
             }
-        }
+        },
+        "ignore": ["packs"]
     },
     "json": {
         "formatter": {
             "enabled": false
+        },
+        "parser": {
+            "allowComments": true
         }
     },
     "files": {
-        "ignore": ["dist", "tests", "types", "static/lib/"]
-    }
+        "ignore": ["dist", "static/lib/"]
+    },
+    "overrides": [
+        {
+            "include": ["types"],
+            "linter": {
+                "rules": {
+                    "suspicious": {
+                        "noRedeclare": "off"
+                    }
+                }
+            }
+        },
+        {
+            "include": ["tests"],
+            "linter": {
+                "rules": {
+                    "suspicious": {
+                        "noThenProperty": "off"
+                    }
+                }
+            }
+        }
+    ]
 }

@@ -115,7 +115,7 @@ function applyDamageDiceOverrides(
     options: { critical?: boolean; maxIncreases?: number } = {},
 ): void {
     const critical = options.critical ?? false;
-    const maxIncreases = options.maxIncreases ?? Infinity;
+    const maxIncreases = options.maxIncreases ?? Number.POSITIVE_INFINITY;
 
     type RequiredNonNullable<T, K extends keyof T> = T & { [P in K]-?: NonNullable<T[P]> };
     const overrideDice = dice.filter(
@@ -244,7 +244,7 @@ function extractBaseDamage(roll: DamageRoll): BaseDamageData[] {
         if (!expression.isDeterministic) {
             throw ErrorPF2e(`Unable to parse DamageRoll with non-deterministic ${expression.constructor.name}.`);
         }
-        throw ErrorPF2e("Unrecognized roll term type " + expression.constructor.name);
+        throw ErrorPF2e(`Unrecognized roll term type ${expression.constructor.name}`);
     }
 
     return roll.instances.flatMap((instance): BaseDamageData[] => {
@@ -287,7 +287,7 @@ function deepFindTerms(term: RollTerm, { flavor }: { flavor: string }): RollTerm
         term instanceof Grouping ? [term.term] : term instanceof ArithmeticExpression ? term.operands : [];
     return [
         term.flavor.split(",").includes(flavor) ? [term] : [],
-        childTerms.map((t) => deepFindTerms(t, { flavor })).flat(),
+        childTerms.flatMap((t) => deepFindTerms(t, { flavor })),
     ].flat();
 }
 

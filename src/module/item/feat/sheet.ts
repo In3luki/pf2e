@@ -233,7 +233,7 @@ class FeatSheetPF2e extends ItemSheetPF2e<FeatPF2e> {
                 } else if (objectHasKey(CONFIG.PF2E.languages, slug)) {
                     const options = this.#getLanguageOptions().granted.available;
                     if (options.some((o) => o.slug === slug)) {
-                        feat.update({ [`system.subfeatures.languages.granted`]: R.uniq([...currentGranted, slug]) });
+                        feat.update({ "system.subfeatures.languages.granted": R.uniq([...currentGranted, slug]) });
                     }
                 }
             } else if (anchor.dataset.action === "delete-language") {
@@ -324,7 +324,7 @@ class FeatSheetPF2e extends ItemSheetPF2e<FeatPF2e> {
                         newSpecial.ancestry = false;
                     }
 
-                    feat.update({ [`system.subfeatures.senses.darkvision.special`]: newSpecial });
+                    feat.update({ "system.subfeatures.senses.darkvision.special": newSpecial });
                 }
             }
         });

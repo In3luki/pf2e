@@ -2,7 +2,7 @@ export class MockScene {
     _source: foundry.documents.SceneSource;
 
     constructor(data: Partial<foundry.documents.SceneSource>) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // biome-ignore lint/suspicious/noExplicitAny: -
         this._source = { _id: fu.randomID(), name: "", ...data } as any;
         this._source.tokens = [];
     }

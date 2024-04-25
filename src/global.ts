@@ -224,12 +224,10 @@ declare global {
     const canvas: CanvasPF2e;
 
     namespace globalThis {
-        // eslint-disable-next-line no-var
         var game: GamePF2e;
-        // eslint-disable-next-line no-var
+
         var fu: typeof foundry.utils;
 
-        // eslint-disable-next-line no-var
         var ui: FoundryUI<
             ActorDirectoryPF2e,
             ItemDirectory<ItemPF2e<null>>,

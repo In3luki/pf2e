@@ -15,7 +15,7 @@ function shoveCheckContext<ItemType extends ItemPF2e<ActorPF2e>>(
 
     // modifiers
     const modifiers = data.modifiers?.length ? [...data.modifiers] : [];
-    if (weapon && weapon.traits.has("shove")) {
+    if (weapon?.traits.has("shove")) {
         const modifier = ActionMacroHelpers.getWeaponPotencyModifier(weapon, data.slug);
         if (modifier) {
             modifiers.push(modifier);

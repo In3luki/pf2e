@@ -105,7 +105,7 @@ class SenseSelector<TActor extends ActorPF2e> extends BaseTagSelector<TActor> {
             )
             .flatMap(([type, values]) => {
                 const acuity = values[1];
-                const range = Math.ceil(Math.max(0, Math.floor(Number(values[2] ?? NaN))) / 5) * 5;
+                const range = Math.ceil(Math.max(0, Math.floor(Number(values[2] ?? Number.NaN))) / 5) * 5;
                 if (tupleHasValue(SENSES_WITH_UNLIMITED_RANGE, type)) {
                     return { type };
                 } else if (tupleHasValue(SENSE_ACUITIES, acuity) && range >= 5) {

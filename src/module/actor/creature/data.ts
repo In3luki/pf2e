@@ -197,10 +197,10 @@ interface CreatureResources extends CreatureResourcesSource {
 }
 
 enum VisionLevels {
-    BLINDED,
-    NORMAL,
-    LOWLIGHT,
-    DARKVISION,
+    BLINDED = 0,
+    NORMAL = 1,
+    LOWLIGHT = 2,
+    DARKVISION = 3,
 }
 
 type VisionLevel = ZeroToThree;

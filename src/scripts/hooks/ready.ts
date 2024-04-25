@@ -51,7 +51,7 @@ export const Ready = {
                 if (migrationRunner.needsMigration()) {
                     if (currentVersion && currentVersion < MigrationRunner.MINIMUM_SAFE_VERSION) {
                         ui.notifications.error(
-                            `Your PF2E system data is from too old a Foundry version and cannot be reliably migrated to the latest version. The process will be attempted, but errors may occur.`,
+                            "Your PF2E system data is from too old a Foundry version and cannot be reliably migrated to the latest version. The process will be attempted, but errors may occur.",
                             { permanent: true },
                         );
                     }

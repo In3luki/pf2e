@@ -293,10 +293,10 @@ class SpellPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends Ite
 
         const rollData = super.getRollData();
         if (this.actor?.isOfType("character", "npc")) {
-            rollData["mod"] = this.actor.abilities[this.attribute].mod;
+            rollData.mod = this.actor.abilities[this.attribute].mod;
         }
-        rollData["castRank"] = castRank;
-        rollData["heighten"] = Math.max(0, castRank - this.baseRank);
+        rollData.castRank = castRank;
+        rollData.heighten = Math.max(0, castRank - this.baseRank);
 
         return rollData;
     }
@@ -813,7 +813,7 @@ class SpellPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends Ite
         if ("castLevel" in castData && !castData.castRank) {
             const sinceUntil = { since: "5.12.0", until: "6.0.0" };
             fu.logCompatibilityWarning("`data.castLevel` is deprecated: use `data.castRank` instead.", sinceUntil);
-            castData.castRank = Number(castData.castLevel ?? NaN);
+            castData.castRank = Number(castData.castLevel ?? Number.NaN);
         }
         const castRank = Number(castData.castRank ?? "");
         if (castRank && castRank !== this.rank) {

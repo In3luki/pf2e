@@ -112,8 +112,6 @@ function getUnidentifiedPlaceholderImage(item: PhysicalItemPF2e): string {
                     return "wands";
                 case "potion":
                     return "potions";
-                case "snare":
-                case "other":
                 default:
                     if (item.traits.has("drug")) {
                         return "drugs";

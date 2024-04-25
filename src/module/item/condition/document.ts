@@ -29,7 +29,7 @@ class ConditionPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends
             ? {
                   type: "counter",
                   min: 0,
-                  max: Infinity,
+                  max: Number.POSITIVE_INFINITY,
                   label: null,
                   value: this.system.value.value,
               }

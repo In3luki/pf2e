@@ -27,7 +27,7 @@ function takeABreather(): void {
             },
             no: {
                 icon: fontAwesomeIcon("times").outerHTML,
-                label: `Cancel`,
+                label: "Cancel",
             },
         },
         default: "yes",

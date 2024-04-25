@@ -151,7 +151,7 @@ abstract class CreatureSheetPF2e<TActor extends CreaturePF2e> extends ActorSheet
             const { itemId, entryId, slotId } = spellRow?.dataset ?? {};
             const collection = actor.spellcasting.collections.get(entryId, { strict: true });
             const spell = collection.get(itemId, { strict: true });
-            const maybeCastRank = Number(spellRow?.dataset.castRank) || NaN;
+            const maybeCastRank = Number(spellRow?.dataset.castRank) || Number.NaN;
             if (Number.isInteger(maybeCastRank) && maybeCastRank.between(1, 10)) {
                 const rank = maybeCastRank as OneToTen;
                 return spell.parentItem?.consume() ?? collection.entry.cast(spell, { rank, slotId: Number(slotId) });

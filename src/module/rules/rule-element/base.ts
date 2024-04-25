@@ -380,7 +380,7 @@ abstract class RuleElementPF2e<TSchema extends RuleElementSchema = RuleElementSc
         return (
             brackets.find((bracket) => {
                 const start = bracket.start ?? 0;
-                const end = bracket.end ?? Infinity;
+                const end = bracket.end ?? Number.POSITIVE_INFINITY;
                 return start <= bracketNumber && end >= bracketNumber;
             })?.value ?? bracketFallthrough
         );

@@ -361,7 +361,7 @@ class RecordField<
         super(options);
 
         if (!this._isValidKeyFieldType(keyField)) {
-            throw new Error(`key field must be a StringField or a NumberField`);
+            throw new Error("key field must be a StringField or a NumberField");
         }
         this.keyField = keyField;
 
@@ -376,7 +376,7 @@ class RecordField<
     ): keyField is StringField<string, string, true, false, false> | NumberField<number, number, true, false, false> {
         if (keyField instanceof fields.StringField || keyField instanceof fields.NumberField) {
             if (keyField.options.required !== true || keyField.options.nullable === true) {
-                throw new Error(`key field must be required and non-nullable`);
+                throw new Error("key field must be required and non-nullable");
             }
             return true;
         }

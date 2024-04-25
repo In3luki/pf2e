@@ -435,7 +435,7 @@ class TokenPF2e<TDocument extends TokenDocumentPF2e = TokenDocumentPF2e> extends
      * any two of the squares.
      */
     distanceTo(target: TokenPF2e, { reach = null }: { reach?: number | null } = {}): number {
-        if (!canvas.ready) return NaN;
+        if (!canvas.ready) return Number.NaN;
 
         if (this === target) return 0;
 

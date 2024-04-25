@@ -36,19 +36,19 @@ export interface ExplorationOptions {
  * travel https://2e.aonprd.com/Rules.aspx?ID=1275
  */
 export enum ExplorationActivities {
-    NONE,
-    HALF_SPEED,
-    AVOID_NOTICE,
-    DEFEND,
-    DETECT_MAGIC,
-    SCOUT,
-    SEARCH,
+    NONE = 0,
+    HALF_SPEED = 1,
+    AVOID_NOTICE = 2,
+    DEFEND = 3,
+    DETECT_MAGIC = 4,
+    SCOUT = 5,
+    SEARCH = 6,
 }
 
 export enum DetectionMode {
-    NONE,
-    DETECT_EVERYTHING,
-    DETECT_BEFORE_WALKING_INTO_IT,
+    NONE = 0,
+    DETECT_EVERYTHING = 1,
+    DETECT_BEFORE_WALKING_INTO_IT = 2,
 }
 
 interface Fraction {
@@ -122,8 +122,8 @@ function calculateCharacterSpeed(
 }
 
 export enum LengthUnit {
-    MILES,
-    FEET,
+    MILES = 0,
+    FEET = 1,
 }
 
 export interface Distance {
@@ -144,8 +144,8 @@ function toFeet(distance: Distance): number {
 }
 
 export enum TimeUnit {
-    MINUTE,
-    HOUR,
+    MINUTE = 0,
+    HOUR = 1,
 }
 
 interface Velocity {
@@ -178,9 +178,9 @@ function toFeetPerMinute(velocity: Velocity): number {
 }
 
 export enum Terrain {
-    NORMAL,
-    DIFFICULT,
-    GREATER_DIFFICULT,
+    NORMAL = 0,
+    DIFFICULT = 1,
+    GREATER_DIFFICULT = 2,
 }
 
 export interface TerrainSlowdown {

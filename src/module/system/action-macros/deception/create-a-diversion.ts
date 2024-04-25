@@ -11,19 +11,19 @@ function createADiversion(options: { variant: CreateADiversionVariant } & SkillA
         switch (options?.variant) {
             case "distracting-words":
                 return {
-                    title: mainTitle + " - " + game.i18n.localize(`${PREFIX}.DistractingWords.Title`),
+                    title: `${mainTitle} - ${game.i18n.localize(`${PREFIX}.DistractingWords.Title`)}`,
                     traits: ["auditory", "linguistic", "mental"],
                     variant: options.variant,
                 };
             case "gesture":
                 return {
-                    title: mainTitle + " - " + game.i18n.localize(`${PREFIX}.Gesture.Title`),
+                    title: `${mainTitle} - ${game.i18n.localize(`${PREFIX}.Gesture.Title`)}`,
                     traits: ["manipulate", "mental"],
                     variant: options.variant,
                 };
             case "trick":
                 return {
-                    title: mainTitle + " - " + game.i18n.localize(`${PREFIX}.Trick.Title`),
+                    title: `${mainTitle} - ${game.i18n.localize(`${PREFIX}.Trick.Title`)}`,
                     traits: ["manipulate", "mental"],
                     variant: options.variant,
                 };

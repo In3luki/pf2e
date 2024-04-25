@@ -260,7 +260,7 @@ declare global {
         name: string;
         img: ImageFilePath;
         uuid: string;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // biome-ignorelint/suspicious/noExplicitAny: -
         [key: string]: any;
     }
 

@@ -16,7 +16,7 @@ export class Migration691WeaponRangeAbilityCategoryGroup extends MigrationBase {
     }
 
     private isOldRangeData(range: WeaponRangeIncrement | null | { value: string }): range is { value: string } {
-        return range instanceof Object && "value" in range && typeof range["value"] === "string";
+        return range instanceof Object && "value" in range && typeof range.value === "string";
     }
 
     override async updateItem(itemSource: ItemSourcePF2e): Promise<void> {

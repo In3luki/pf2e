@@ -25,7 +25,7 @@ export class Migration638SpellComponents extends MigrationBase {
             components[component] = components[component] || oldComponents.has(component);
         }
 
-        delete components["value"];
+        delete components.value;
         if ("game" in globalThis) {
             components["-=value"] = null;
         }

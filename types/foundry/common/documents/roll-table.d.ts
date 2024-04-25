@@ -46,7 +46,6 @@ type RollTableSchema = {
     /** The HTML text description for this RollTable document */
     description: fields.HTMLField;
     /** A Collection of TableResult embedded documents which belong to this RollTable */
-    // biome-ignore lint/suspicious/noExplicitAny:
     results: fields.EmbeddedCollectionField<documents.BaseTableResult<BaseRollTable>>;
     /** The Roll formula which determines the results chosen from the table */
     formula: fields.StringField<string>;

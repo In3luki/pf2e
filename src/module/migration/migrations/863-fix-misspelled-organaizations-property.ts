@@ -19,5 +19,5 @@ export class Migration863FixMisspelledOrganaizationsProperty extends MigrationBa
 interface WithMisspelledProperty {
     organaizations?: string;
     organizations?: string;
-    ["-=organaizations"]?: null;
+    "-=organaizations"?: null;
 }

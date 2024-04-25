@@ -8,9 +8,9 @@ export function calculateRemainingDuration(
 ): { expired: boolean; remaining: number } {
     if (durationData.unit === "encounter") {
         const isExpired = effect.system.expired;
-        return { expired: !!isExpired, remaining: isExpired ? 0 : Infinity };
+        return { expired: !!isExpired, remaining: isExpired ? 0 : Number.POSITIVE_INFINITY };
     } else if (durationData.unit === "unlimited" || !("start" in effect.system)) {
-        return { expired: false, remaining: Infinity };
+        return { expired: false, remaining: Number.POSITIVE_INFINITY };
     }
 
     const start = effect.system.start.value;

@@ -23,7 +23,7 @@ class AdjustModifierRuleElement extends RuleElementPF2e<AdjustModifierSchema> {
         }
 
         this.suppress ??= false;
-        this.maxApplications ??= Infinity;
+        this.maxApplications ??= Number.POSITIVE_INFINITY;
     }
 
     static override defineSchema(): AdjustModifierSchema {

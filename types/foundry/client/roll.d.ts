@@ -1,7 +1,5 @@
 import type { DiceTerm, FunctionTerm, OperatorTerm, PoolTerm, RollTerm } from "../client-esm/dice/terms/module.d.ts";
 
-export {};
-
 declare global {
     /**
      * An interface and API for constructing and evaluating dice rolls.

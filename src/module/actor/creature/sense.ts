@@ -6,9 +6,9 @@ import { SENSES_WITH_MANDATORY_ACUITIES, SENSE_ACUITIES, SENSE_TYPES } from "./v
 
 class Sense extends foundry.abstract.DataModel<ActorPF2e, SenseSchema> {
     constructor(data: SenseConstructorParams, options: DataModelConstructionOptions<ActorPF2e>) {
-        if (data.range === Infinity) data.range = null;
+        if (data.range === Number.POSITIVE_INFINITY) data.range = null;
         super(data, { ...options, strict: false });
-        this.range ??= Infinity;
+        this.range ??= Number.POSITIVE_INFINITY;
         this.acuity = SENSES_WITH_MANDATORY_ACUITIES[this.type] ?? this.acuity;
     }
 
@@ -57,7 +57,7 @@ class Sense extends foundry.abstract.DataModel<ActorPF2e, SenseSchema> {
                     : sense;
         };
 
-        const range = this.range < Infinity ? this.range : null;
+        const range = this.range < Number.POSITIVE_INFINITY ? this.range : null;
         switch (this.type) {
             case "darkvision":
             case "greater-darkvision":

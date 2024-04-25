@@ -27,14 +27,14 @@ function spellSlotGroupIdToNumber(groupId: SpellSlotGroupId): ZeroToTen;
 function spellSlotGroupIdToNumber(groupId: Maybe<string | number>): ZeroToTen | null;
 function spellSlotGroupIdToNumber(groupId: Maybe<string | number>): ZeroToTen | null {
     if (groupId === "cantrips") return 0;
-    const numericValue = Number(groupId ?? NaN);
+    const numericValue = Number(groupId ?? Number.NaN);
     return numericValue.between(0, 10) ? (numericValue as ZeroToTen) : null;
 }
 
 /** Try to coerce some value (typically from user input) to a slot group ID */
 function coerceToSpellGroupId(value: unknown): SpellSlotGroupId | null {
     if (value === "cantrips") return value;
-    const numericValue = Number(value) || NaN;
+    const numericValue = Number(value) || Number.NaN;
     return numericValue.between(1, 10) ? (numericValue as OneToTen) : null;
 }
 

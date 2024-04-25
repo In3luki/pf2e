@@ -50,8 +50,8 @@ export class Migration815ConsumableDataCleanup extends MigrationBase {
                 delete systemData[key];
                 systemData[`-=${key}`] = null;
             } else if (R.isObject(value) && "_deprecated" in value) {
-                delete value["_deprecated"];
-                value[`-=_deprecated`] = null;
+                delete value._deprecated;
+                value["-=_deprecated"] = null;
             }
         }
     }

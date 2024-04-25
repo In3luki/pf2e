@@ -99,6 +99,7 @@ function escapeCheckContext<ItemType extends ItemPF2e<ActorPF2e>>(
     throw new CheckContextError("No applicable statistic to roll for Escape check.", opts.actor, "null");
 }
 
+// biome-ignore lint/suspicious/noShadowRestrictedNames: -
 function escape(options: SkillActionOptions): void {
     const slug = options?.skill ?? "";
     const modifiers = options?.modifiers;

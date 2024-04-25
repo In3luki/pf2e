@@ -6,7 +6,7 @@ export class Migration782UnnestActorTraits extends MigrationBase {
 
     override async updateActor(source: MaybeWithExtraNestedTraits): Promise<void> {
         const traits = source.system.traits;
-        if (traits && traits.traits && Array.isArray(traits.traits.value)) {
+        if (traits?.traits && Array.isArray(traits.traits.value)) {
             traits.value = traits.traits.value;
             delete traits.traits;
             traits["-=traits"] = null;

@@ -15,7 +15,7 @@ function grappleCheckContext<ItemType extends ItemPF2e<ActorPF2e>>(
 
     // modifier
     const modifiers = data.modifiers?.length ? [...data.modifiers] : [];
-    if (weapon && weapon.traits.has("grapple")) {
+    if (weapon?.traits.has("grapple")) {
         const modifier = ActionMacroHelpers.getWeaponPotencyModifier(weapon, data.slug);
         if (modifier) {
             modifiers.push(modifier);

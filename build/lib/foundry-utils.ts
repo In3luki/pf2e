@@ -5,26 +5,26 @@
  * @param original Some sort of data
  * @return The clone of that data
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: -
 function deepClone<T>(original: T): T extends Set<any> | Map<any, any> | Collection<any> ? never : T {
     // Simple types
     if (typeof original !== "object" || original === null)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // biome-ignore lint/suspicious/noExplicitAny: -
         return original as T extends Set<any> | Map<any, any> | Collection<any> ? never : T;
 
     // Arrays
-    if (original instanceof Array)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (Array.isArray(original))
+        // biome-ignore lint/suspicious/noExplicitAny: -
         return original.map(deepClone) as unknown as T extends Set<any> | Map<any, any> | Collection<any> ? never : T;
 
     // Dates
     if (original instanceof Date)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // biome-ignore lint/suspicious/noExplicitAny: -
         return new Date(original) as unknown as T extends Set<any> | Map<any, any> | Collection<any> ? never : T;
 
     // Unsupported advanced objects
     if ((original as { constructor: unknown }).constructor !== Object)
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // biome-ignore lint/suspicious/noExplicitAny: -
         return original as T extends Set<any> | Map<any, any> | Collection<any> ? never : T;
 
     // Other objects
@@ -32,7 +32,7 @@ function deepClone<T>(original: T): T extends Set<any> | Map<any, any> | Collect
     for (const k of Object.keys(original)) {
         clone[k] = deepClone(original[k as keyof typeof original]);
     }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: -
     return clone as unknown as T extends Set<any> | Map<any, any> | Collection<any> ? never : T;
 }
 
@@ -186,7 +186,7 @@ function mergeObject(
 function _mergeInsert(
     original: object,
     k: string,
-    v: unknown,
+    v: unknown, // biome-ignore lint/style/useDefaultParameterLast: -
     {
         insertKeys,
         insertValues,
@@ -221,7 +221,7 @@ function _mergeInsert(
 function _mergeUpdate(
     original: object,
     k: string,
-    v: unknown,
+    v: unknown, // biome-ignore lint/style/useDefaultParameterLast: -
     {
         insertKeys,
         insertValues,
@@ -256,7 +256,7 @@ function _mergeUpdate(
     // Overwrite an existing value
     if (overwrite) {
         if (tx !== "undefined" && tv !== tx && enforceTypes) {
-            throw new Error(`Mismatched data types encountered during object merge.`);
+            throw new Error("Mismatched data types encountered during object merge.");
         }
         (original as Record<string, unknown>)[k] = v;
     }
@@ -283,7 +283,7 @@ function objectsEqual(a: object | null, b: object | null): boolean {
 }
 
 function _arrayEquals(arr: unknown[], other: unknown): boolean {
-    if (!(other instanceof Array) || other.length !== arr.length) return false;
+    if (!Array.isArray(other) || other.length !== arr.length) return false;
     return arr.every((v0, i) => {
         const v1 = other[i];
         const t0 = getType(v0);

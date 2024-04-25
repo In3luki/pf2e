@@ -27,6 +27,7 @@ class Predicate extends Array<PredicateStatement> {
     }
 
     /** Test if the given predicate passes for the given list of options. */
+    // biome-ignore lint/style/useDefaultParameterLast: -
     static test(predicate: PredicateStatement[] = [], options: Set<string> | string[]): boolean {
         return predicate instanceof Predicate ? predicate.test(options) : new Predicate(...predicate).test(options);
     }
@@ -78,9 +79,9 @@ class Predicate extends Array<PredicateStatement> {
                 if (!Number.isNaN(maybeNumber)) return [maybeNumber];
                 const pattern = new RegExp(String.raw`^${operand}:([^:]+)$`);
                 const values = domainArray
-                    .map((s) => Number(pattern.exec(s)?.[1] || NaN))
+                    .map((s) => Number(pattern.exec(s)?.[1] || Number.NaN))
                     .filter((v) => !Number.isNaN(v));
-                return values.length > 0 ? values : [NaN];
+                return values.length > 0 ? values : [Number.NaN];
             };
             const leftValues = getValues(left);
             const rightValues = getValues(right);

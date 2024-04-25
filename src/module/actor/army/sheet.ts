@@ -154,12 +154,12 @@ class ArmySheetPF2e extends ActorSheetPF2e<ArmyPF2e> {
         for (const gearElement of htmlQueryAll(html, "[data-action=change-magic-armor]")) {
             gearElement.addEventListener("click", () => {
                 const newValue = Math.clamp(this.actor.system.ac.potency + 1, 0, 3);
-                this.actor.update({ [`system.ac.potency`]: newValue });
+                this.actor.update({ "system.ac.potency": newValue });
             });
             gearElement.addEventListener("contextmenu", (event) => {
                 event.preventDefault();
                 const newValue = Math.clamp(this.actor.system.ac.potency - 1, 0, 3);
-                this.actor.update({ [`system.ac.potency`]: newValue });
+                this.actor.update({ "system.ac.potency": newValue });
             });
         }
 

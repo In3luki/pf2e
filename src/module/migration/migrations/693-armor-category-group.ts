@@ -8,11 +8,7 @@ export class Migration693ArmorCategoryGroup extends MigrationBase {
     static override version = 0.693;
 
     private isOldGroupData(group: OldOrNewGroup): group is { value: ArmorGroup | "" | null } {
-        return (
-            group instanceof Object &&
-            "value" in group &&
-            (typeof group["value"] === "string" || group["value"] === null)
-        );
+        return group instanceof Object && "value" in group && (typeof group.value === "string" || group.value === null);
     }
 
     override async updateItem(itemSource: ItemSourcePF2e): Promise<void> {

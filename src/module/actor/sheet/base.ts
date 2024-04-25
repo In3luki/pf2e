@@ -484,7 +484,7 @@ abstract class ActorSheetPF2e<TActor extends ActorPF2e> extends ActorSheet<TActo
                 const itemId = itemEl?.dataset.itemId;
                 const item = collection.get(itemId, { strict: true });
                 if (item.isOfType("spell")) {
-                    const castRank = Number(itemEl?.dataset.castRank ?? NaN);
+                    const castRank = Number(itemEl?.dataset.castRank ?? Number.NaN);
                     return item.toMessage(event, { data: { castRank } });
                 } else if (item.isOfType("physical")) {
                     const subitemId = htmlClosest(event.target, "[data-subitem-id]")?.dataset.subitemId;
@@ -1163,7 +1163,7 @@ abstract class ActorSheetPF2e<TActor extends ActorPF2e> extends ActorSheet<TActo
         const dataset = { ...anchor.dataset };
         const itemType = R.compact([dataset.type ?? dataset.types?.split(",")].flat()).find((t) => t !== "shield");
         if (!objectHasKey(CONFIG.PF2E.Item.documentClasses, itemType)) {
-            throw ErrorPF2e(`Unrecognized item type: types`);
+            throw ErrorPF2e(`Unrecognized item type: ${itemType}`);
         }
 
         if (itemType === "spell") {

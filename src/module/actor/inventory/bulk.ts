@@ -17,7 +17,7 @@ export class InventoryBulk {
     }
 
     get #actorStrength(): number {
-        return this.actor.isOfType("character", "npc") ? this.actor.abilities.str.mod : Infinity;
+        return this.actor.isOfType("character", "npc") ? this.actor.abilities.str.mod : Number.POSITIVE_INFINITY;
     }
 
     get encumberedAfter(): number {
@@ -27,7 +27,7 @@ export class InventoryBulk {
     get encumberedAfterBreakdown(): string {
         const addend = this.encumberedAfterAddend;
         const stat = game.i18n.localize(CONFIG.PF2E.abilities.str);
-        return `5 + ${this.#actorStrength} (${stat})` + (addend ? ` + ${addend}` : "");
+        return `5 + ${this.#actorStrength} (${stat})${addend ? ` + ${addend}` : ""}`;
     }
 
     get max(): number {
@@ -37,7 +37,7 @@ export class InventoryBulk {
     get maxBreakdown(): string {
         const addend = this.maxAddend;
         const stat = game.i18n.localize(CONFIG.PF2E.abilities.str);
-        return `10 + ${this.#actorStrength} (${stat})` + (addend ? ` + ${addend}` : "");
+        return `10 + ${this.#actorStrength} (${stat})${addend ? ` + ${addend}` : ""}`;
     }
 
     get value(): Bulk {
@@ -118,13 +118,11 @@ export class InventoryBulk {
 
     /** Non-stowing containers are not "real" and thus shouldn't split stack groups */
     static #flattenNonStowing(items: PhysicalItemPF2e[]): PhysicalItemPF2e[] {
-        return items
-            .map((item) => {
-                if (item.isOfType("backpack") && !item.stowsItems) {
-                    return this.#flattenNonStowing(item.contents.contents);
-                }
-                return item;
-            })
-            .flat();
+        return items.flatMap((item) => {
+            if (item.isOfType("backpack") && !item.stowsItems) {
+                return this.#flattenNonStowing(item.contents.contents);
+            }
+            return item;
+        });
     }
 }

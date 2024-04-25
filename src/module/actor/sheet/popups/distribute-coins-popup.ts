@@ -93,7 +93,7 @@ export class DistributeCoinsPopup extends FormApplication<ActorPF2e, DistributeC
             const coinsToRemove = coinShare.scale(playerCount);
             thisActor.inventory.removeCoins(coinsToRemove, { byValue: false });
         }
-        let message = `Distributed `;
+        let message = "Distributed ";
         if (coinShare.pp !== 0) message += `${coinShare.pp} pp `;
         if (coinShare.gp !== 0) message += `${coinShare.gp} gp `;
         if (coinShare.sp !== 0) message += `${coinShare.sp} sp `;

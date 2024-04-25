@@ -49,7 +49,7 @@ class AutomaticBonusProgression {
         }
 
         if (ac > 0) {
-            const modifiers = (synthetics.modifiers["ac"] ??= []);
+            const modifiers = (synthetics.modifiers.ac ??= []);
             modifiers.push(
                 () =>
                     new ModifierPF2e({
@@ -62,7 +62,7 @@ class AutomaticBonusProgression {
         }
 
         if (perception > 0) {
-            const modifiers = (synthetics.modifiers["perception"] ??= []);
+            const modifiers = (synthetics.modifiers.perception ??= []);
             modifiers.push(
                 () =>
                     new ModifierPF2e({

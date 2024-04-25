@@ -142,7 +142,7 @@ class CampaignFeaturePF2e<TParent extends ActorPF2e | null = ActorPF2e | null> e
         normalizeActionChangeData(this, changed);
 
         // Delete level if optional for the category type
-        if (changed.system && changed.system.category) {
+        if (changed.system?.category) {
             type SystemSourceWithDeletions = DeepPartial<CampaignFeatureSystemSource> & {
                 "-=level"?: null;
             };

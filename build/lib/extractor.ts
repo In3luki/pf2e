@@ -316,8 +316,7 @@ class PackExtractor {
                 const slug = docSource.system.slug;
                 if (typeof slug === "string" && slug !== sluggify(docSource.name)) {
                     console.warn(
-                        `Warning: Name change detected on ${docSource.name}. ` +
-                            "Please remember to create a slug migration before next release.",
+                        `Warning: Name change detected on ${docSource.name}. Please remember to create a slug migration before next release.`,
                     );
                 }
 

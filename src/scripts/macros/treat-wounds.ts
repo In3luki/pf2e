@@ -35,8 +35,8 @@ export async function treatWounds(options: ActionDefaultOptions): Promise<void> 
 <label for="skill-${domIdAppend}">${game.i18n.localize("PF2E.Actions.TreatWounds.SkillSelect")}</label>
 <select id="skill-${domIdAppend}"${!chirurgeon && !naturalMedicine ? " disabled" : ""}>
   <option value="medicine">${medicineName}</option>
-  ${chirurgeon ? `<option value="crafting">${game.i18n.localize("PF2E.SkillCrafting")}</option>` : ``}
-  ${naturalMedicine ? `<option value="nature">${game.i18n.localize("PF2E.SkillNature")}</option>` : ``}
+  ${chirurgeon ? `<option value="crafting">${game.i18n.localize("PF2E.SkillCrafting")}</option>` : ""}
+  ${naturalMedicine ? `<option value="nature">${game.i18n.localize("PF2E.SkillNature")}</option>` : ""}
 </select>
 </div>
 </form>
@@ -63,7 +63,7 @@ ${
 <label for="risky-surgery-${domIdAppend}">${game.i18n.localize("PF2E.Actions.TreatWounds.Feats.RiskySurgery")}</label>
 <input type="checkbox" id="risky-surgery-${domIdAppend}" />
 </div></form>`
-        : ``
+        : ""
 }
 ${
     CheckFeat(actor, "mortal-healing")
@@ -71,7 +71,7 @@ ${
 <label for="mortal-healing-${domIdAppend}">${game.i18n.localize("PF2E.Actions.TreatWounds.Feats.MortalHealing")}</label>
 <input type="checkbox" id="mortal-healing-${domIdAppend}" checked />
 </div></form>`
-        : ``
+        : ""
 }
 </form>
 `,
@@ -79,7 +79,7 @@ ${
             yes: {
                 icon: fontAwesomeIcon("hand-holding-medical").outerHTML,
                 label: game.i18n.localize("PF2E.Actions.TreatWounds.Label"),
-                callback: ($html) => treat(actor, $html, options.event, domIdAppend),
+                callback: ($html) => treat(actor, $html, options.event ?? null, domIdAppend),
             },
             no: {
                 icon: fontAwesomeIcon("times").outerHTML,
@@ -94,7 +94,7 @@ ${
 async function treat(
     actor: CreaturePF2e,
     $html: JQuery,
-    event: JQuery.TriggeredEvent | Event | null = null,
+    event: JQuery.TriggeredEvent | Event | null,
     domIdAppend: string,
 ): Promise<void> {
     const { name } = actor;
@@ -132,7 +132,7 @@ async function treat(
         },
     });
 
-    (actor.synthetics.degreeOfSuccessAdjustments["medicine"] ??= []).push(
+    (actor.synthetics.degreeOfSuccessAdjustments.medicine ??= []).push(
         ...(riskySurgery ? [increaseDoS("RiskySurgery")] : mortalHealing ? [increaseDoS("MortalHealing")] : []),
     );
 

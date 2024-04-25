@@ -94,7 +94,7 @@ class ChoiceSetPrompt extends PickAThingPrompt<ItemPF2e<ActorPF2e>, string | num
                         return updateAnchor(true);
                     }
                     const index = Number(data.value);
-                    if (!isNaN(index)) {
+                    if (!Number.isNaN(index)) {
                         const choice = this.choices.at(index);
                         if (UUIDUtils.isItemUUID(choice?.value)) {
                             updateAnchor(false, data.value);

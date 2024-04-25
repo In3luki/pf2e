@@ -110,7 +110,7 @@ class FeatPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends Item
         }
 
         // `Infinity` is stored as `null` in JSON, so change back
-        this.system.maxTakable ??= Infinity;
+        this.system.maxTakable ??= Number.POSITIVE_INFINITY;
 
         // Feats takable only at level 1 can never be taken multiple times
         if (this.system.onlyLevel1) {
@@ -253,13 +253,13 @@ class FeatPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends Item
             const newSense: SenseData = {
                 type,
                 acuity: data.acuity ?? "precise",
-                range: data.range ?? Infinity,
+                range: data.range ?? Number.POSITIVE_INFINITY,
                 source: this.name,
             };
             const existing = senseData.find((s) => s.type === type);
             if (!existing) {
                 senseData.push(newSense);
-            } else if ((data.range ?? Infinity) > (existing.range ?? Infinity)) {
+            } else if ((data.range ?? Number.POSITIVE_INFINITY) > (existing.range ?? Number.POSITIVE_INFINITY)) {
                 senseData.splice(senseData.indexOf(existing), 1, newSense);
             } else if (acuityValues[data.acuity ?? "vague"] > acuityValues[existing.acuity ?? "precise"]) {
                 senseData.splice(senseData.indexOf(existing), 1, newSense);

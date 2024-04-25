@@ -17,7 +17,7 @@ const darkvision = new VisionMode({
     },
     vision: {
         darkness: { adaptive: true },
-        defaults: { attenuation: 0, contrast: 0, saturation: -1.0, brightness: 0.75, range: Infinity },
+        defaults: { attenuation: 0, contrast: 0, saturation: -1.0, brightness: 0.75, range: Number.POSITIVE_INFINITY },
     },
 });
 
@@ -118,7 +118,7 @@ class HearingDetectionMode extends DetectionMode {
 }
 
 declare namespace HearingDetectionMode {
-    // eslint-disable-next-line no-var
+    // biome-ignore lint/style/noVar: -
     var _detectionFilter: OutlineOverlayFilter | undefined;
 }
 
