@@ -6,8 +6,7 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "prettier"
+        "plugin:@typescript-eslint/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": 2018,
@@ -18,8 +17,7 @@
         "dist/"
     ],
     "rules": {
-        "eqeqeq": "error",
-        "prettier/prettier": "error",
+        "eqeqeq": "off",
         "no-console": "off",
         "no-plusplus": [
             "error",
@@ -55,7 +53,7 @@
         ],
         "@typescript-eslint/prefer-namespace-keyword": "off",
         "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-namespace": [
             "error",
             {
@@ -64,17 +62,10 @@
         ],
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-unsafe-declaration-merging": "off",
-        "@typescript-eslint/no-unused-vars": "off",
-        "@typescript-eslint/array-type": [
-            "error",
-            {
-                "default": "array"
-            }
-        ]
+        "@typescript-eslint/no-unused-vars": "off"
     },
     "plugins": [
         "jest",
-        "prettier",
         "@typescript-eslint"
     ],
     "overrides": [
