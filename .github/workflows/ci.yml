@@ -19,6 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Git
+        run: |
+          git remote add upstream https://github.com/foundryvtt/pf2e.git
+          git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 upstream master
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -36,10 +41,10 @@ jobs:
         run: |
           npm ci
 
-      - name: Build
-        run: |
-          npm run build
-
       - name: Test
         run: |
           npm run test
+
+      - name: Build
+        run: |
+          npm run build
