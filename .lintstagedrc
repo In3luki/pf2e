@@ -1,0 +1,7 @@
+{
+    "*.ts": ["eslint"],
+    "*.scss": ["prettier --check src/styles"],
+    "static/**/*.json": [
+        "eslint --no-eslintrc --plugin json --rule \"json/*: error\" --rule \"linebreak-style: error\""
+    ]
+}
