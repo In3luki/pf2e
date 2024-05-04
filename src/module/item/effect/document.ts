@@ -1,6 +1,8 @@
 import type { ActorPF2e } from "@actor";
 import type { BadgeReevaluationEventType, EffectBadge, EffectBadgeSource } from "@item/abstract-effect/data.ts";
 import { AbstractEffectPF2e, EffectBadgeFormulaSource, EffectBadgeValueSource } from "@item/abstract-effect/index.ts";
+import { reduceItemName } from "@item/helpers.ts";
+import { ChatMessagePF2e } from "@module/chat-message/index.ts";
 import type { RuleElementOptions, RuleElementPF2e } from "@module/rules/index.ts";
 import type { UserPF2e } from "@module/user/index.ts";
 import { ErrorPF2e, sluggify } from "@util";
@@ -120,6 +122,10 @@ class EffectPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends Ab
         const roll = await new Roll(badge.value, this.getRollData()).evaluate();
         const initial = initialValue ?? roll.total;
         const reevaluate = badge.reevaluate ? { event: badge.reevaluate, formula: badge.value, initial } : null;
+        const token = actor.getActiveTokens(false, true).shift();
+        const speaker = ChatMessagePF2e.getSpeaker({ actor, token });
+        roll.toMessage({ flavor: reduceItemName(this.name), speaker });
+
         return { type: "value", value: roll.total, labels: badge.labels, reevaluate };
     }
 
