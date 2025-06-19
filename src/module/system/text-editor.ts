@@ -889,7 +889,7 @@ function getCheckDC({
                 domains,
                 modifiers: [modifier],
             },
-            { extraRollOptions: [`inline-dc:value:${base}`], item },
+            { extraRollOptions: [`inline-dc:type:${params.type}`, `inline-dc:value:${base}`], item },
         );
         return String(stat.dc.value);
     }
