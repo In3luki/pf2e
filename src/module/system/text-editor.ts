@@ -874,7 +874,8 @@ function getCheckDC({
     if (base && actor && !immutable) {
         const idDomain = item ? `${item.id}-inline-dc` : null;
         const slugDomain = `${sluggify(name)}-inline-dc`;
-        const domains = [params.type !== "flat" ? "all" : null, "inline-dc", idDomain, slugDomain].filter(R.isTruthy);
+        const domains =
+            params.type === "flat" ? ["flat-check"] : ["inline-dc", idDomain, slugDomain].filter(R.isTruthy);
         const modifier = new ModifierPF2e({
             slug: "base",
             label: "PF2E.ModifierTitle",
@@ -889,7 +890,7 @@ function getCheckDC({
                 domains,
                 modifiers: [modifier],
             },
-            { extraRollOptions: [`inline-dc:type:${params.type}`, `inline-dc:value:${base}`], item },
+            { extraRollOptions: [`inline-dc:value:${base}`], item },
         );
         return String(stat.dc.value);
     }
