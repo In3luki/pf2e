@@ -871,10 +871,10 @@ function getCheckDC({
     })();
 
     // Apply modifiers if this item is mutable. The "all" domain catches elite/weak adjustments
-    if (base && actor && !immutable) {
+    if (base && actor && !immutable && params.type !== "flat") {
         const idDomain = item ? `${item.id}-inline-dc` : null;
         const slugDomain = `${sluggify(name)}-inline-dc`;
-        const domains = [params.type !== "flat" ? "all" : null, "inline-dc", idDomain, slugDomain].filter(R.isTruthy);
+        const domains = ["inline-dc", idDomain, slugDomain].filter(R.isTruthy);
         const modifier = new ModifierPF2e({
             slug: "base",
             label: "PF2E.ModifierTitle",
