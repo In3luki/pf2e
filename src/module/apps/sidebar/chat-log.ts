@@ -379,6 +379,17 @@ class ChatLogPF2e extends fa.sidebar.tabs.ChatLog {
             return message.isRerollable && !!actor?.isOfType("character") && actor.heroPoints.value > 0;
         };
 
+        const canMythicPointReroll: ContextMenuCondition = (li) => {
+            const message = game.messages.get(li.dataset.messageId, { strict: true });
+            const actor = message.actor;
+            return (
+                message.isRerollable &&
+                !!actor?.isOfType("character") &&
+                actor.system.resources.mythicPoints.value > 0 &&
+                actor.itemTypes.action.some((a) => a.slug === "rewrite-fate")
+            );
+        };
+
         const canShowRollDetails: ContextMenuCondition = (li) => {
             const message = game.messages.get(li.dataset.messageId, { strict: true });
             return game.user.isGM && !!message.flags.pf2e.context;
@@ -446,7 +457,16 @@ class ChatLogPF2e extends fa.sidebar.tabs.ChatLog {
                 condition: canHeroPointReroll,
                 callback: (li) => {
                     const message = game.messages.get(li.dataset.messageId, { strict: true });
-                    CheckPF2e.rerollFromMessage(message, { heroPoint: true });
+                    CheckPF2e.rerollFromMessage(message, { usePoint: "hero" });
+                },
+            },
+            {
+                name: "PF2E.RerollMenu.MythicPoint",
+                icon: fa.fields.createFontAwesomeIcon("circle-m").outerHTML,
+                condition: canMythicPointReroll,
+                callback: (li) => {
+                    const message = game.messages.get(li.dataset.messageId, { strict: true });
+                    CheckPF2e.rerollFromMessage(message, { usePoint: "mythic" });
                 },
             },
             {

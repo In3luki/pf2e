@@ -3323,7 +3323,10 @@
                 "new": "Rerolled and kept the new result",
                 "lower": "Rerolled and kept the lower result"
             },
-            "WarnNoHeroPoint": "{name} has no Hero Points"
+            "MessageMythicPoint": "Rerolled using a Mythic Point",
+            "MythicPoint": "Reroll using a Mythic Point",
+            "WarnNoHeroPoint": "{name} has no Hero Points",
+            "WarnNoMythicPoint": "{name} has no Mythic Points"
         },
         "ResistancesLabel": "Resistances",
         "RestoreSpellTitle": "Restore Spell",
