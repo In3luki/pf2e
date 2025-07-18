@@ -457,7 +457,7 @@ class ChatLogPF2e extends fa.sidebar.tabs.ChatLog {
                 condition: canHeroPointReroll,
                 callback: (li) => {
                     const message = game.messages.get(li.dataset.messageId, { strict: true });
-                    CheckPF2e.rerollFromMessage(message, { usePoint: "hero" });
+                    CheckPF2e.rerollFromMessage(message, { resource: "hero-points" });
                 },
             },
             {
@@ -466,7 +466,7 @@ class ChatLogPF2e extends fa.sidebar.tabs.ChatLog {
                 condition: canMythicPointReroll,
                 callback: (li) => {
                     const message = game.messages.get(li.dataset.messageId, { strict: true });
-                    CheckPF2e.rerollFromMessage(message, { usePoint: "mythic" });
+                    CheckPF2e.rerollFromMessage(message, { resource: "mythic-points" });
                 },
             },
             {
