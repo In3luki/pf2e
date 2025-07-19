@@ -480,12 +480,13 @@ class CheckPF2e {
                         `PF2E.RerollMenu.Message${sluggify(resource, { camel: "bactrian" })}`,
                     );
                 } else {
-                    ui.notifications.warn(
-                        game.i18n.format("PF2E.RerollMenu.WarnNoResource", {
+                    ui.notifications.warn("PF2E.RerollMenu.WarnNoResource", {
+                        localize: true,
+                        format: {
                             name: rerollingActor.name,
                             resource: points.label,
-                        }),
-                    );
+                        },
+                    });
                     return;
                 }
             }
@@ -521,7 +522,6 @@ class CheckPF2e {
             // Calculate the new total modifier
             const options = fu.deepClone(oldRoll.options);
             options.totalModifier = (options.totalModifier ?? 0) - proficiencyModifierValue + mythicModifierValue;
-            options.isReroll = true;
             return new CheckRoll(
                 `${options.dice}${signedInteger(options.totalModifier, { emptyStringZero: true })}`,
                 oldRoll.data,
