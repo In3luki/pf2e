@@ -499,7 +499,9 @@ class CheckPF2e {
         context.skipDialog = true;
         context.isReroll = true;
         context.options.push("check:reroll");
-        if (resource) context.options.push(`check:${resource.slice(0, resource.length - 1)}`);
+        if (resource) context.options.push(`check:reroll:${resource}`);
+        // For backwards compatibility. Remove once the `heroPoint` option is removed.
+        if (resource === "hero-points") context.options.push(`check:hero-point`);
 
         const oldRoll = message.rolls.at(0);
         if (!(oldRoll instanceof CheckRoll)) throw ErrorPF2e("Unexpected error retrieving prior roll");
@@ -674,11 +676,18 @@ class CheckPF2e {
         const html = await roll.render();
         const element = parseHTML(`<div>${html}</div>`);
 
+        // Handle roll formula visibility
+        const formulaElement = htmlQuery(element, ".dice-formula");
+        if (formulaElement && !isOld && resource !== "mythic-points") {
+            // Hide rerolled formula for everything except mythic point rerolls
+            formulaElement.classList.add("hidden");
+        } else if (formulaElement && isOld && resource === "mythic-points") {
+            // Fade out the old formula element for mythic point rerolls
+            formulaElement.style.opacity = "0.3";
+        }
+
         // Remove the buttons if this is the discarded roll
         if (isOld) element.querySelector(".message-buttons")?.remove();
-
-        // Add mythic reroll class to dice formula element if necessary
-        if (resource === "mythic-points") element.querySelector(".dice-formula")?.classList.add("mythic");
 
         if (![1, 20].includes(die.total)) return element.innerHTML;
 

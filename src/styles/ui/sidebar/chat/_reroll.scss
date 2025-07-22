@@ -6,14 +6,9 @@
 
 .message-content {
     .reroll-discard {
-        .dice-formula.mythic,
         .dice-total,
         .dice-tooltip {
             opacity: 0.3;
         }
-    }
-
-    .reroll-second .dice-formula:not(.mythic) {
-        display: none;
     }
 }
