@@ -244,7 +244,7 @@ class SpellPreparationApp extends SvelteApplicationMixin<
         const sortRelative = async (source: SpellPF2e, sortTarget: SpellPF2e, sortBefore: boolean): Promise<void> => {
             const siblings = collection.contents.filter((s) => s.id !== source.id);
             const updates = fu
-                .performIntegerSort(source, { target: sortTarget, siblings, sortBefore })
+                .performIntegerSort<SpellPF2e>(source, { target: sortTarget, siblings, sortBefore })
                 .map((u) => ({ _id: u.target.id, sort: u.update.sort }));
             await this.actor.updateEmbeddedDocuments("Item", updates);
         };

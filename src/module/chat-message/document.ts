@@ -405,7 +405,7 @@ interface ChatMessagePF2e extends ChatMessage<UserPF2e | null> {
 declare namespace ChatMessagePF2e {
     function createDocuments<TDocument extends foundry.abstract.Document>(
         this: ConstructorOf<TDocument>,
-        data?: (TDocument | DeepPartial<TDocument["_source"]>)[],
+        data?: NoInfer<(TDocument | DeepPartial<TDocument["_source"]>)[]>,
         operation?: Partial<MessageCreateOperationPF2e>,
     ): Promise<TDocument[]>;
 

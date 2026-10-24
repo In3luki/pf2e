@@ -18,7 +18,7 @@ class CombatantPF2e<
 > extends Combatant<TParent, TTokenDocument> {
     static override createDocuments<TDocument extends Document>(
         this: ConstructorOf<TDocument>,
-        data?: (TDocument | DeepPartial<TDocument["_source"]>)[],
+        data?: NoInfer<(TDocument | DeepPartial<TDocument["_source"]>)[]>,
         operation?: Partial<DatabaseCreateOperation<TDocument["parent"]>>,
     ): Promise<TDocument[]>;
     static override async createDocuments(

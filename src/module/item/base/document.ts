@@ -627,7 +627,7 @@ class ItemPF2e<TParent extends ActorPF2e | null = ActorPF2e | null> extends Item
 
     static override async createDocuments<TDocument extends Document>(
         this: ConstructorOf<TDocument>,
-        data?: (TDocument | DeepPartial<TDocument["_source"]>)[],
+        data?: NoInfer<(TDocument | DeepPartial<TDocument["_source"]>)[]>,
         operation?: Partial<DatabaseCreateOperation<TDocument["parent"]>>,
     ): Promise<TDocument[]>;
     static override async createDocuments(

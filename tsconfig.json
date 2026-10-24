@@ -16,6 +16,7 @@
             "DOM.AsyncIterable"
         ],
         "noEmit": true,
+        "rootDir": ".",
         "strict": true,
         "noFallthroughCasesInSwitch": true,
         "skipLibCheck": true,

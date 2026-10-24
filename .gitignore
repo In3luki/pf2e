@@ -7,6 +7,7 @@ icons/\!dox/
 coverage
 build/logs
 .eslintcache
+.svelte-check/
 dist/
 docs/
 foundryconfig.json
